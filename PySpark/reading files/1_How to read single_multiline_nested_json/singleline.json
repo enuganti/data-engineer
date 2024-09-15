@@ -1,0 +1,7 @@
+{"source":"catalog", "description":"bravia", "input_timestamp":1124256609, "last_update_timestamp":1524256609, "country":"IND", "user":"Hari"}
+{"source":"SAP", "description":"sony", "input_timestamp":1224256609, "last_update_timestamp":1424256609, "country":"US", "user":"Rajesh"}
+{"source":"ADLS", "description":"bse", "input_timestamp":1324256609, "last_update_timestamp":1524256609, "country":"CANADA", "user":"Lokesh"}
+{"source":"Blob", "description":"exchange", "input_timestamp":1424256609, "last_update_timestamp":1724256609, "country":"US", "user":"Sharath"}
+{"source":"SQL", "description":"Stock", "input_timestamp":1524256609, "last_update_timestamp":1664256609, "country":"SWEDEN", "user":"Sheetal"}
+{"source":"datawarehouse", "description":"azure", "input_timestamp":1624256609, "last_update_timestamp":1874256609, "country":"UK", "user":"Raj"}
+{"source":"oracle", "description":"ADF", "input_timestamp":1779256609, "last_update_timestamp":188256609, "country":"Norway", "user":"Synapse"}

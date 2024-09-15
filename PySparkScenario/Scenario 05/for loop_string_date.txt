@@ -1,0 +1,90 @@
+How to Use cast() with Multiple Columns?
+---------------------------------------
+
+%fs ls /FileStore/tables/
+
+
+df1 = spark.read.option('header',True).option('InferSchema',True).csv("/FileStore/tables/MarketPrice-1.csv")
+display(df1.limit(10))
+df1.printSchema()
+
+
+--> Method 01
+
+
+df22 = df1.withColumn("Start_Date", to_date(col("Start_Date"), "dd-MMM-yyyy")) \
+         .withColumn("End_Date", to_date(col("End_Date"), "dd-MMM-yyyy")) \
+         .withColumn("Effective_Date", to_date(col("Effective_Date"), "dd-MMM-yyyy"))
+display(df22.limit(10))
+df22.printSchema()
+
+
+
+spark.conf.get("spark.sql.legacy.timeParserPolicy")
+
+
+spark.conf.set("spark.sql.parquet.int96RebaseModeInWrite", "CORRECTED")
+spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
+
+
+
+df2 = df1.withColumn("Start_Date", to_date(col("Start_Date"), "dd-MMM-yy")) \
+         .withColumn("End_Date", to_date(col("End_Date"), "dd-MMM-yy")) \
+         .withColumn("Effective_Date", to_date(col("Effective_Date"), "dd-MMM-yy"))
+display(df2.limit(10))
+df2.printSchema()
+
+
+
+--> Method 02
+
+
+# specify columns to convert to different dataType
+my_cols_01 = ['Effective_Date', 'Start_Date', 'End_Date']
+
+
+
+
+def convert_multiple_columns_to_date(df, columns, date_format="dd-MMM-yy"):
+    """
+    Converts multiple columns in a DataFrame from string type to date type.
+    Parameters:
+    df (DataFrame): The input DataFrame.
+    columns (list of str): A list of column names to convert.
+    date_format (str): The format of the date in the string columns. Default is "dd-MMM-yy".
+    Returns:
+    DataFrame: A new DataFrame with the specified columns converted to date type.
+    """
+    for column in columns:
+        df = df.withColumn(column, to_date(df[column], date_format))
+    return df
+
+
+
+
+# Columns to convert
+my_cols_01 = ['Effective_Date', 'Start_Date', 'End_Date']
+
+# Convert columns
+df_converted = convert_multiple_columns_to_date(df1, my_cols_01)
+
+# Show result
+display(df_converted.limit(15))
+
+
+
+
+# # specify columns to convert to different dataType
+# my_cols_01 = ['Effective_Date', 'Start_Date', 'End_Date']
+
+# # convert dataType of each column in list to string
+# for x in my_cols_01:
+#     df3 = df1.withColumn(x, to_date(col(x), "dd-MMM-yy"))
+
+# # view DataFrame
+# display(df3.limit(10))
+
+# df3.printSchema()
+
+
+

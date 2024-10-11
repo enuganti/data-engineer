@@ -1,0 +1,125 @@
+from pyspark.sql.functions import col, explode
+import pyspark.sql.functions as f
+
+
+help(explode)
+
+
+1) Create dataframe with array column
+    Explode(Array Type)
+--------------------------------------
+
+data = [(1, "Suresh", [".net", "Python", "Spark", "Azure"]),
+        (2, "Ramya", ["java", "PySpark", "AWS"]),
+        (3, "Apurba", ["C", "SAP", "Mainframes"]),
+        (4, "Pranitha", ["COBOL", "DEVOPS"]),
+        (5, "Sowmya", ["ABAP"])]
+
+schema = ["id", "Name", "skills"]
+
+df = spark.createDataFrame(data=data, schema=schema)
+df.show(truncate=False)
+df.printSchema()
+print("Number of Rows:", df.count())
+
+
+
+df = df.withColumn("New-Skills", explode(col('skills')))
+display(df)
+df.printSchema()
+
+
+
+data1 = [(1, "Suresh", [".net", "Python", "Spark", "Azure"]),
+         (2, "Ramya", ["java", "PySpark", "AWS"]),
+         (3, "Rakesh", ["ADF", "SQL", None, "GCC"]),
+         (4, "Apurba", ["C", "SAP", "Mainframes"]),
+         (5, "Pranitha", ["COBOL", "DEVOPS"]),
+         (6, "Sowmya", ["ABAP"]),
+         (7, "Anand", None),
+         (8, "Sourabh", [])]
+
+schema1 = ["id", "Name", "skills"]
+
+df1 = spark.createDataFrame(data=data1, schema=schema1)
+df1.show(truncate=False)
+df1.printSchema()
+print("Number of Rows:", df1.count())
+
+
+df1 = df1.withColumn("New-Skills", explode(col('skills')))
+display(df1)
+df1.printSchema()
+
+
+
+df1.withColumn("New-Skills", explode(col('skills'))).select("id", "Name", "New-Skills").show()
+
+
+
+# using select method
+df1.select("id", "Name", explode(col("skills")).alias("New-Skills")).show(truncate=False)
+
+
+
+2) Create dataframe with map column
+   Explode(MapType)
+------------------------------------
+
+
+data2 = [('Sam', {'Car':'Baleno', 'Bike':'Honda', 'Office':'EcoSpace', 'Technology':'Azure'}),
+         ('Krishna', {'Car':'Santro', 'Bike':'RoyalEnfield', 'Office':'Bharathi', 'Technology':'AWS'}),
+         ('Arijit', {'Car':'Etios', 'Bike':'BMW', 'Office':'EcoWorld'}),
+         ('Swamy', {'Car':'Swift', 'Bike':'TVS'}),
+         ('Senthil', None),
+         ("Anand", {})]
+
+schema2 = ['EmpName', 'EmpDetails']
+
+df2 = spark.createDataFrame(data=data2, schema=schema2)
+display(df2)
+df2.show(truncate=False)
+df2.printSchema()
+
+
+
+df2 = df2.select(df2.EmpName, df2.EmpDetails, explode(df2.EmpDetails))
+display(df2)
+df2.printSchema()
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+
+# define data
+data = [['india', 'Captain', [33, 25, 15]], 
+        ['England', 'Keeper', [34, 25, 52]], 
+        ['Australia', 'Bowler', [21, 30, 6]]] 
+  
+# define column names
+columns = ['team', 'position', 'points'] 
+
+
+from pyspark.sql.functions import explode
+
+#explode points column into rows
+df_new = df.withColumn('points', explode(df.points))
+
+
++-----------+----------+--------+
+| team      | position | points |
++-----------+----------+--------+
+| india     | Captain  |  33    |
+| india     | Captain  |  25    |
+| india     | Captain  |  15    |
+| England   | Keeper   |  34    |
+| England   | Keeper   |  25    |
+| England   | Keeper   |  52    |
+| Australia | Bowler   |  21    |
+| Australia | Bowler   |  30    |
+| Australia | Bowler   |  6     |
++-----------+----------+--------+
+
+

@@ -1,0 +1,50 @@
+Index,Category,Type,Effective_Date,Income_Level,Department,TARGET,Input_Timestamp_UTC
+DISCOUNT,Top,average,6-Feb-23,Low,TESTING,SQL Server,1709109264
+DISCOUNT,Top,average,6-Feb-23,Low,TESTING,SQL Server,1710234895
+DISCOUNT,Top,average,8-Jan-24,Low,TESTING,SQL Server,1709109264
+DISCOUNT,Top,average,8-Jan-24,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Top,average,6-Mar-23,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Forward,medium,6-Mar-23,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Forward,medium,6-Jan-25,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Forward,medium,6-Jan-25,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Forward,medium,6-Apr-23,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Forward,medium,6-Apr-23,Low,TESTING,SQL Server,1707813327
+DISCOUNT,Forward,medium,6-Jan-26,Low,TESTING,ORACLE,1710234895
+DISCOUNT,Backward,medium,6-Jan-26,Low,TESTING,ORACLE,1710234895
+DISCOUNT,Backward,medium,6-Jul-23,Low,TESTING,ORACLE,1710234895
+DISCOUNT,Backward,High Level,6-Jul-23,Low,TESTING,ORACLE,1710234895
+DISCOUNT,Backward,High Level,6-Oct-23,Low,SOFTWARE,ORACLE,1710234895
+DISCOUNT,Backward,High Level,6-Oct-23,Low,SOFTWARE,ORACLE,1710234895
+FXGBP,Backward,High Level,6-Jan-23,Low,SOFTWARE,ORACLE,1710514841
+FXGBP,Backward,High Level,6-Jan-23,Low,SOFTWARE,ORACLE,1723632694
+GASOLYN,ENDOWER,High Level,31-Jan-24,TOP,SOFTWARE,ORACLE,1710514846
+GASOLYN,ENDOWER,High Level,29-Feb-24,TOP,SOFTWARE,ORACLE,1710514846
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,

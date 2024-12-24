@@ -1,0 +1,11 @@
+ column1,column2,column3
+ 2234,ec-lookup | e030,1.0
+ 224566634,ec-lookup | 00000456,1.0
+ 8899992234,ec-lookup | 0x99999,5.0
+ 678882234,ec-lookup | 002000,1.0
+ 8899992234,ec-lookup | 0x99999,5.0
+ 678882234,ec-lookup | 002000,1.0
+ 0099992234,ec-lookup | 0x99999,5.0
+ 99678882234,ec-lookup | sx-LB000,1.0
+ 998899992234,ec-lookup | 0xbx99999,5.0
+ 878882234,ec-lookup | b3344002000,1.0

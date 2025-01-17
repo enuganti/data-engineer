@@ -6,11 +6,6 @@
 
 # COMMAND ----------
 
-# MAGIC %md
-# MAGIC #### **1) Adding a Column with Random Values**
-
-# COMMAND ----------
-
 from pyspark.sql.functions import rand
 
 # COMMAND ----------
@@ -23,13 +18,13 @@ display(df)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **2) Assigning Random Decimal Values to a New Column**
+# MAGIC #### **1) Assigning Random Decimal Values to a New Column**
 
 # COMMAND ----------
 
 from pyspark.sql.functions import rand
 # create new column named 'rand' that contains random floats between
-df_with_random = df.withColumn("randomValue_01", rand())
+df_with_random = df.withColumn("randomValue", rand())
 display(df_with_random)
 
 # COMMAND ----------
@@ -43,7 +38,7 @@ display(df_with_random_mult)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **3) Filtering Rows Based on Random Values**
+# MAGIC #### **2) Filtering Rows Based on Random Values**
 
 # COMMAND ----------
 
@@ -62,7 +57,7 @@ df.withColumn("random_value", (rand() < 0.5)).display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **4) Assigning Random Integer Values to a New Column**
+# MAGIC #### **3) Assigning Random Integer Values to a New Column**
 
 # COMMAND ----------
 
@@ -108,7 +103,7 @@ display(df_cast)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **5) How to create random decimals / integers between 0 and 100**
+# MAGIC #### **4) How to create random decimals / integers between 0 and 100**
 
 # COMMAND ----------
 
@@ -141,7 +136,7 @@ display(df_with_random_range)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **6) How to add random noise to existing numeric columns**
+# MAGIC #### **5) How to add random noise to existing numeric columns**
 
 # COMMAND ----------
 
@@ -157,7 +152,7 @@ display(df_with_noise)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **7) seed**
+# MAGIC #### **6) seed**
 # MAGIC - By specifying a value for **seed** within the **rand()** function, we will be able to generate the **same random numbers** each time we run the code.
 # MAGIC
 # MAGIC        rand(seed=23)
@@ -216,7 +211,7 @@ display(df_with_rand_seed)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **8) How to partition using range() & rand()?**
+# MAGIC #### **7) How to partition using range() & rand()?**
 
 # COMMAND ----------
 

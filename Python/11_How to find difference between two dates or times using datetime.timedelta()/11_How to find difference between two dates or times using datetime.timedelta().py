@@ -71,10 +71,12 @@
 
 # COMMAND ----------
 
-from datetime import datetime, timedelta
-# Create a timedelta object representing 5 days
-delta = timedelta(days=5)
-print("Timedelta:", delta)
+# MAGIC %md
+# MAGIC      import datetime
+# MAGIC      datetime.timedelta(days=10)
+# MAGIC                   (or)
+# MAGIC      from datetime import datetime, timedelta
+# MAGIC      timedelta(days=5)
 
 # COMMAND ----------
 
@@ -84,9 +86,42 @@ print("Timedelta:", interval)
 
 # COMMAND ----------
 
+from datetime import datetime, timedelta
+# Create a timedelta object representing 5 days
+delta = timedelta(days=5)
+print("Timedelta:", delta)
+
+# COMMAND ----------
+
 import datetime
 interval = datetime.timedelta(weeks=1, days=3, hours=1)
 print(interval)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC **Key Differences between `datetime.date.today() and datetime.datetime.today()`:**
+# MAGIC
+# MAGIC **datetime.date.today()**
+# MAGIC
+# MAGIC - Returns only the **date (Year, Month, Day)**.
+# MAGIC - Use **datetime.date.today()** if you only need the **date** (e.g., filtering by date).
+# MAGIC
+# MAGIC **datetime.datetime.today()**
+# MAGIC
+# MAGIC - Returns both **date and time** (Year, Month, Day, Hour, Minute, Second, Microsecond).
+# MAGIC - Use **datetime.datetime.today()** if you need **both date and time** (e.g., timestamp logging).
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC       | Feature        | datetime.date.today()   |    datetime.datetime.today()       |
+# MAGIC       |----------------|-------------------------|------------------------------------|
+# MAGIC       | Returns	   | Only Date (YYYY-MM-DD)  | Date & Time (YYYY-MM-DD HH:MM:SS)  |
+# MAGIC       | Data Type	   | datetime.date	     | datetime.datetime                  |
+# MAGIC       | Includes Time? |        ❌ No	     |        ✅ Yes                      |
+# MAGIC       | Example Output |	2025-02-04	     | 2025-02-04 14:30:15.123456         |
+# MAGIC
 
 # COMMAND ----------
 
@@ -131,6 +166,7 @@ print(f"{interval.microseconds = }")
 
 # COMMAND ----------
 
+from datetime import datetime, timedelta
 # Get the current date and time
 current_datetime = datetime.now()
 
@@ -182,6 +218,7 @@ print("Days:", difference.days)
 # COMMAND ----------
 
 # DBTITLE 1,current time
+import datetime
 # Get the current date and time
 now = datetime.datetime.now()
 now
@@ -194,6 +231,7 @@ print(now)
 
 # Create a timedelta object representing 2 hours, 30 minutes, and 45 seconds
 delta = timedelta(hours=2, minutes=30, seconds=45)
+print('delta:', delta)
 
 # Add the timedelta to the current date
 new_datetime = now + delta
@@ -210,8 +248,8 @@ print(td)
 # COMMAND ----------
 
 # DBTITLE 1,weeks
-add_weeks = now + datetime.timedelta(week=1)
-sub_weeks = now - datetime.timedelta(week=1)
+add_weeks = now + timedelta(weeks=1)
+sub_weeks = now - timedelta(weeks=1)
 
 print("Weeks Addition:", add_weeks)
 print("Weeks Subtractiob:", sub_weeks)
@@ -235,8 +273,8 @@ print("Sub 365 days:", newdate_365days_sub)
 # COMMAND ----------
 
 # DBTITLE 1,hours
-add_hours = today + datetime.timedelta(hours=3)
-sub_hours = today - datetime.timedelta(hours=3)
+add_hours = today + timedelta(hours=3)
+sub_hours = today - timedelta(hours=3)
 
 print("Add Hours:", add_hours)
 print("Sub Hours:", sub_hours)
@@ -271,7 +309,21 @@ print("Sub milliseconds:", sub_milliseconds)
 
 # COMMAND ----------
 
-import random
+# MAGIC %md
+# MAGIC       from datetime import datetime, timedelta
+# MAGIC       import random
+# MAGIC
+# MAGIC       # Generate a random date within the past year
+# MAGIC       random_date = datetime.now() - timedelta(days=random.randint(0, 365))
+# MAGIC       print(random_date)
+# MAGIC
+# MAGIC - The **datetime** module itself **doesn't** have a **now()** method. Need to call **now()** from **datetime.datetime**.
+# MAGIC   - **datetime.now()** correctly retrieves the **current datetime**.
+# MAGIC   - **timedelta(days=random.randint(0, 365))** generates a **random number** of days to subtract.
+
+# COMMAND ----------
+
+from datetime import datetime, timedelta
 (datetime.now() - timedelta(days=random.randint(0, 365)))
 
 # COMMAND ----------

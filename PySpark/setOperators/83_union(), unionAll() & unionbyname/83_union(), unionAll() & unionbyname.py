@@ -30,7 +30,7 @@
 # MAGIC %md
 # MAGIC **When to Use What?**
 # MAGIC
-# MAGIC - Use **union() or unionAll()** when **schemas and column orders** are the **same**.
+# MAGIC - Use **union() or unionAll()** when **schemas and column orders & column count** are the **same**.
 # MAGIC - Use **unionByName()** when **column names** are the **same** but their **order** might be **different**.
 
 # COMMAND ----------
@@ -56,6 +56,7 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,spark version
 from pyspark.sql import SparkSession
 
 # Initialize SparkSession
@@ -109,27 +110,6 @@ display(df2)
 
 # COMMAND ----------
 
-# DBTITLE 1,dataframe 04
-# dataframe with different order of columns as compared to df1
-simpleData4 = [("Kailash", 96600, "Sales", 30, "RJ", 15500), \
-               ("Somesh", 88000, "Finance", 22, "UP", 27800), \
-               ("Jennifer", 59000, "Support", 43, "TN", 35500), \
-               ("Kumar", 768000, "Marketing", 28, "CA", 945000), \
-               ("Sandya", 789000, "IT", 37, "PNB", 678900), \
-               ("Swaroop", 679000, "Admin", 24, "KL", 478000), \
-               ("Joseph", 789000, "Finance", 29, "DL", 456700), \
-               ("Rashi", 467800, "Maintenance", 23, "TS", 872300), \
-               ("Krishna", 945670, "Backend", 39, "AP", 435000)
-               ]
-columns4 = ["employee_name", "salary", "department", "age", "state", "bonus"]
-
-df4 = spark.createDataFrame(data = simpleData4, schema = columns4)
-
-df4.printSchema()
-display(df4)
-
-# COMMAND ----------
-
 # DBTITLE 1,dataframe 05
 # dataframe with different order of columns and count as compared to df1
 simpleData5 = [("Kailash", 96600, "Sales", 30, "RJ", 15500, 12345), \
@@ -171,15 +151,37 @@ unionDF.display()
 
 # COMMAND ----------
 
+# DBTITLE 1,drop duplicates after union
 display(unionDF.dropDuplicates())
 
 # COMMAND ----------
 
-# DBTITLE 1,rename column of df2
+# DBTITLE 1,df2: Rename "bonus" to "bonus_new"
 df2_col_re = df2.withColumnRenamed("bonus", "bonus_new")
 display(df2_col_re)
+
+# COMMAND ----------
+
+# union() to merge two DataFrames has same order and count
+# df1: "employee_name", "department", "state", "salary", "age", "bonus"
+# df2: "employee_name", "department", "state", "salary", "age", "bonus_new"
 unionDFNew = df1.union(df2_col_re)
 unionDFNew.display()
+
+# COMMAND ----------
+
+# DBTITLE 1,lit
+from pyspark.sql.functions import lit
+df2_col_lit = df2_col_re.withColumn("bonus_new", lit(1000))
+display(df2_col_lit)
+
+# COMMAND ----------
+
+# union() to merge two DataFrames has same order and count
+# df1: "employee_name", "department", "state", "salary", "age", "bonus"
+# df2: "employee_name", "department", "state", "salary", "age", "bonus_new"
+unionDFNewLit = df1.union(df2_col_lit)
+unionDFNewLit.display()
 
 # COMMAND ----------
 
@@ -188,15 +190,21 @@ df2_mltcol_re = df2.withColumnRenamed("employee_name", "EName")\
                    .withColumnRenamed("department", "dept")\
                    .withColumnRenamed("state", "country")\
                    .withColumnRenamed("salary", "commission")\
-                   .withColumnRenamed("bonus_new", "age")\
-                   .withColumnRenamed("age", "bonus")
-                   
+                   .withColumnRenamed("age", "bonus1")\
+                   .withColumnRenamed("bonus", "Age1")
+display(df2_mltcol_re)
+
+# COMMAND ----------
+
+# DBTITLE 1,Scenario 03
+# df1: "employee_name", "department", "state", "salary", "age", "bonus"
+# df2_mltcol_re: "EName", "dept", "country", "commission", "bonus1", "Age1"
 unionDFMult = df1.union(df2_mltcol_re)
 unionDFMult.display()
 
 # COMMAND ----------
 
-# DBTITLE 1,Adding new column to df2
+# DBTITLE 1,df3: Adding new column to df2
 df3 = df2.withColumn("hike", df2.bonus*100)
 display(df3)
 
@@ -206,13 +214,13 @@ display(df3)
 # union() to merge two DataFrames of different count
 # df1 and df2 has same column names and order but with one extra column in df2
 # df1: "employee_name", "department", "state", "salary", "age", "bonus"
-# df3: "employee_name", "department", "state", "salary", "age", "bonus", "pincode"
+# df3: "employee_name", "department", "state", "salary", "age", "bonus", "hike"
 unionDF1 = df1.union(df3)
 unionDF1.display()
 
 # COMMAND ----------
 
-# DBTITLE 1,Remove column "bonus"
+# DBTITLE 1,Exclude columns "bonus" & "hike"
 df3 = df3.select("employee_name", "department", "state", "salary", "age")
 display(df3)
 
@@ -224,6 +232,27 @@ display(df3)
 # df3: "employee_name", "department", "state", "salary", "age"
 unionDF2 = df1.union(df3)
 unionDF2.display()
+
+# COMMAND ----------
+
+# DBTITLE 1,dataframe 04
+# dataframe with different order of columns as compared to df1
+simpleData4 = [("Kailash", 96600, "Sales", 30, "RJ", 15500), \
+               ("Somesh", 88000, "Finance", 22, "UP", 27800), \
+               ("Jennifer", 59000, "Support", 43, "TN", 35500), \
+               ("Kumar", 768000, "Marketing", 28, "CA", 945000), \
+               ("Sandya", 789000, "IT", 37, "PNB", 678900), \
+               ("Swaroop", 679000, "Admin", 24, "KL", 478000), \
+               ("Joseph", 789000, "Finance", 29, "DL", 456700), \
+               ("Rashi", 467800, "Maintenance", 23, "TS", 872300), \
+               ("Krishna", 945670, "Backend", 39, "AP", 435000)
+               ]
+columns4 = ["employee_name", "salary", "department", "age", "state", "bonus"]
+
+df4 = spark.createDataFrame(data = simpleData4, schema = columns4)
+
+df4.printSchema()
+display(df4)
 
 # COMMAND ----------
 
@@ -252,7 +281,7 @@ unionAllDF.display()
 # MAGIC %md
 # MAGIC **Merge without Duplicates**
 # MAGIC
-# MAGIC - Since the union() method returns **all rows without distinct records**, we will use the distinct() function to return just one record when a **duplicate exists**.
+# MAGIC - Since the union() method returns **all rows without distinct records**, we will use the **distinct()** function to return just one record when a **duplicate exists**.
 
 # COMMAND ----------
 

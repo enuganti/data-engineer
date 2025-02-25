@@ -70,17 +70,6 @@ display(df_Q4)
 
 # COMMAND ----------
 
-from pyspark.sql.functions import split, col, explode, max, size
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC      # Use selectExpr to split the array into separate columns
-# MAGIC      df_expr = df_Q4.selectExpr("item_id", "c1[0] as c1", "c1[1] as c2", "c1[2] as c3", "c2")
-# MAGIC      display(df_expr)
-
-# COMMAND ----------
-
 # Split the c1 column into individual columns
 df_split = df_Q4.withColumn("c1_split_0", df_Q4.c1[0]) \
                 .withColumn("c1_split_1", df_Q4.c1[1]) \
@@ -98,6 +87,10 @@ display(df_split)
 
 # MAGIC %md
 # MAGIC #### **Question 03**
+
+# COMMAND ----------
+
+from pyspark.sql.functions import col, max, size
 
 # COMMAND ----------
 

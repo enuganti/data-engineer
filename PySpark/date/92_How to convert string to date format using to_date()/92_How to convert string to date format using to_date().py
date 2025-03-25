@@ -2,9 +2,9 @@
 # MAGIC %md
 # MAGIC #### **to_date()**
 # MAGIC
-# MAGIC **How to convert string to date format**
+# MAGIC **How to convert string to date format?**
 # MAGIC
-# MAGIC - **to_date()** function is used to format a **string type column** into the **Date Type column**.
+# MAGIC ✅ **to_date()** function is used to format a **date string / timestamp string column** into the **Date Type column** using a **specified format**.
 
 # COMMAND ----------
 
@@ -18,26 +18,36 @@
 
 # MAGIC %md
 # MAGIC #### **to_date() Vs date_format()**
-# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC **1) to_date()**
 # MAGIC
-# MAGIC - to_date() function is used to format **string (StringType) to date (DateType)** column.
+# MAGIC ✅ to_date() function is used to format **string (StringType) to date (DateType)** column.
 # MAGIC
-# MAGIC - If the **format is not provide**, to_date() takes the **default value as 'yyyy-MM-dd'**.
+# MAGIC ✅ If the **format is not provide**, to_date() takes the **default value as 'yyyy-MM-dd'**.
 # MAGIC
-# MAGIC - to_date() accepts the first argument in any date format.
+# MAGIC ✅ to_date() accepts the first argument in any date format.
 # MAGIC
-# MAGIC - If the input column values **does not match** with the format specified (second argument) then to_date() populates the new column with **null**.
+# MAGIC ✅ If the input column values **does not match** with the format specified (second argument) then to_date() populates the new column with **null**.
 # MAGIC
+# MAGIC ✅ Returns **NULL** if the format does **not match**.
+# MAGIC
+# MAGIC ✅ Extracts only the **date** portion **(removes time part if present)**.
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC **2) date_format()**
 # MAGIC
-# MAGIC - date_format() function is used to **format date (DateType / StringType) to (StringType)** in the specified format.
+# MAGIC ✅ date_format() function is used to **format date (DateType / StringType) to (StringType)** in the specified format.
 # MAGIC
-# MAGIC - If the format is **not provide**, date_format() throws a **TypeError**.
+# MAGIC ✅ If the format is **not provide**, date_format() throws a **TypeError**.
 # MAGIC
-# MAGIC - date_format() requires the **first argument** to be in **'yyyy-MM-dd'** format, else it populates the **new column with null**.
+# MAGIC ✅ date_format() requires the **first argument** to be in **'yyyy-MM-dd'** format, else it populates the **new column with null**.
 # MAGIC
-# MAGIC - If the **input column values does not match** with the **format** specified (second argument) then date_format() converts it in the specified **format**.
+# MAGIC ✅ If the **input column values does not match** with the **format** specified (second argument) then date_format() converts it in the specified **format**.
 
 # COMMAND ----------
 

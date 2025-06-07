@@ -1,0 +1,97 @@
+1) dim_classic_type:
+-----------------
+
+CREATE SCHEMA dbo;
+DROP SCHEMA IF EXISTS dbo;
+
+CREATE TABLE dbo.dim_classic_type
+(
+    Source_id VARCHAR(255),
+    Source_name VARCHAR(255),
+    manager_code VARCHAR(255),
+    manager_type_name VARCHAR(255),
+    valid_from_datetime TIMESTAMP,
+    valid_to_datetime TIMESTAMP,
+    Agreement_Party VARCHAR(255),
+    source_system_id VARCHAR(10),
+    created_datetime TIMESTAMP,
+    updated_datetime TIMESTAMP
+);
+
+
+INSERT INTO dbo.dim_classic_type
+(Source_id, Source_name, manager_code, manager_type_name, valid_from_datetime, valid_to_datetime, Agreemen_Party, source_system_id, created_datetime, updated_datetime)
+VALUES
+(base64(aes_encrypt(CONCAT_WS('-', 'A', '1','1900-01-01'), 'abcdefghijklmnop', 'ECB', 'PKCS')), 'A', 'GM', 'Sales', '1900-01-01', '9999-12-31', 'VOLVO', 3, GETDATE(), GETDATE()),
+(base64(aes_encrypt(CONCAT_WS('-', 'B', '1','1900-01-01'), 'abcdefghijklmnop', 'ECB', 'PKCS')), 'A', 'AGM', 'Finance', '1900-01-01', '9999-12-31', 'MARUTHI', 3, GETDATE(), GETDATE()),
+(base64(aes_encrypt(CONCAT_WS('-', 'C', '1','1900-01-01'), 'abcdefghijklmnop', 'ECB', 'PKCS')), 'A', 'DGM', 'Marketing', '1900-01-01', '9999-12-31', 'BENZ', 3, GETDATE(), GETDATE());
+
+
+SELECT * FROM dbo.dim_classic_type;
+TRUNCATE TABLE dbo.dim_classic_type;
+DROP TABLE dbo.dim_classic_type;
+
+
+
+
+2) dim_calculation_type:
+------------------------
+
+CREATE TABLE `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_calculation_type
+(
+    calculation_type_id VARCHAR(255),
+    calculation_type_code VARCHAR(255),
+    calculation_type_name VARCHAR(255),
+    source_system_id VARCHAR(10),
+    valid_from_datetime TIMESTAMP,
+    valid_to_datetime TIMESTAMP,
+    created_datetime TIMESTAMP,
+    updated_datetime TIMESTAMP
+);
+
+
+INSERT INTO `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_calculation_type
+(calculation_type_id, calculation_type_code, calculation_type_name, source_system_id, valid_from_datetime, valid_to_datetime, created_datetime, updated_datetime)
+VALUES
+(base64(aes_encrypt(CONCAT_WS('-', 'HC', '1', '1900-01-01'), 'HC', 'House Currency', 1, '1900-01-01', '9999-12-31', GETDATE(), GETDATE()),
+(base64(aes_encrypt(CONCAT_WS('-', 'HC', '1', '1900-01-01'), 'IC', 'Trade Currency', 1, '1900-01-01', '9999-12-31', GETDATE(), GETDATE());
+
+
+SELECT * FROM `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_calculation_type;
+TRUNCATE TABLE `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_calculation_type;
+DROP TABLE `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_calculation_type;
+
+
+3) dim_cashflow_type:
+---------------------
+
+
+CREATE TABLE `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_cashflow_type
+(
+    cashflow_type_id VARCHAR(255),
+    cashflow_type_name VARCHAR(255),
+    cashflow_subtype_name VARCHAR(255),
+    source_system_id VARCHAR(10),
+    valid_from_datetime TIMESTAMP,
+    valid_to_datetime TIMESTAMP,
+    created_datetime TIMESTAMP,
+    updated_datetime TIMESTAMP
+);
+
+
+INSERT INTO `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_cashflow_type
+(cashflow_type_id, cashflow_type_name, cashflow_subtype_name, source_system_id, valid_from_datetime, valid_to_datetime, created_datetime, updated_datetime)
+VALUES
+(base64(aes_encrypt(CONCAT_WS('-', 'None', '1', '1900-01-01'), 'abcdefghijklmnop', 'ECB', 'PKCS')), 'None', NULL, 1, '1900-01-01', '9999-12-31', GETDATE(), GETDATE());
+
+
+SELECT * FROM `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_cashflow_type;
+TRUNCATE TABLE `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_cashflow_type;
+DROP TABLE `ts_shell_energy_eun-unitycatalog-dev`.raw_aligne.enriched_dim_cashflow_type;
+
+
+
+
+
+
+

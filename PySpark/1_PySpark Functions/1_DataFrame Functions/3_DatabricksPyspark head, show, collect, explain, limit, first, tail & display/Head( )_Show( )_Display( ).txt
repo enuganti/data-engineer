@@ -1,0 +1,102 @@
+import pyspark
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName('dataframe').getOrCreate()
+
+
+df = spark.read.csv("titanic.csv", header=True, inferSchema=True)
+df.show()
+
+
+
+Show():
+-------
+
+df.show(2, truncate= True)
+
+
+Display():
+---------
+
+  - display(df) will also display the dataframe in the tabular format, but along with normal tabular view, we can leverage the display() function to get the different views like tablular, pie, Area, Bar, etc., and download options from Databricks.
+
+  - Dataframe.Display method in Databricks notebook fetches only 1000 rows by default
+
+           # Syntax
+           df.display()
+           display(df)   --> databricks specific function (this function won't work in SPARK)
+
+
+
+head():
+-------
+
+# Returns the first Row
+df.head()
+
+# to display top n rows in the dataframe
+df.head(5)
+
+
+tail():
+-------
+
+# Returns Last N rows
+# to return last n rows in the dataframe
+df.tail(1)
+
+
+first():
+--------
+
+# Returns the first Row (display first row of the dataframe)
+df.first()
+
+
+limit():
+--------
+
+# Returns Top N rows
+df.limit(3)
+
+display(df.limit(50))
+
+
+top():
+------
+
+# used to select top n rows
+
+# select top 2 rows
+print(df.take(2))
+
+# select top 4 rows
+print(df.take(4))
+
+# select top 1 row
+print(df.take(1))
+
+
+collect():
+----------
+
+# Returns all dataset
+df.collect()
+
+# select first row
+print(dataframe.select(['Employee ID',
+                        'Employee NAME',
+                        'Company Name']).collect()[0])
+
+# select third row
+print(dataframe.select(['Employee ID',
+                        'Employee NAME',
+                        'Company Name']).collect()[2])
+
+# select forth row
+print(dataframe.select(['Employee ID',
+                        'Employee NAME',
+                        'Company Name']).collect()[3])
+
+
+
+df.explain()

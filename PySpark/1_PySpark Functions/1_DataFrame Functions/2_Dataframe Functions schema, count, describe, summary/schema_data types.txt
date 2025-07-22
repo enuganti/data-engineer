@@ -1,0 +1,45 @@
+1) Schema:
+
+     df.schema
+     print(df.schema)
+
+     df.printSchema()
+
+     # Returns dataframe column names and data types
+     df.dtypes
+
+     df.schema.fields
+
+
+2) count
+
+     df.count()
+     df.distinct().show()
+     df.distinct().count()
+
+
+3) List of the column names / Number of Columns
+
+     # both gives same output**
+     df.columns
+     df.schema.names / df.schema.fieldNames()
+
+
+4) Number of columns
+
+     len(df.columns)
+     len(df.dtypes)
+
+5) describe
+
+     df.describe().show()
+     df.describe(['Price']).show()
+
+6) summary
+
+     df.summary().show()
+     df.summary("count", "33%", "50%", "66%").show()
+     df.summary("count", "count_distinct").show()
+     df.summary("count", "approx_count_distinct").show()
+
+     df.select("Price").summary("count", "33%", "50%", "66%").show()

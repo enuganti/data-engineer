@@ -1,0 +1,4 @@
+df = df.select("*", to_timestamp(from_unixtime(col("Data.Party_Input_Timestamp"),'yyyy-MM-dd HH:mm:ss')).alias('party_input_timestamp'),
+                    to_timestamp(from_unixtime(col("Data.Party_Last_Update_Timestamp"),'yyyy-MM-dd HH:mm:ss')).alias('party_last_update_timestamp'),
+                    to_timestamp(lit("1900-01-01 00:00:00"),'yyyy-MM-dd HH:mm:ss').alias('valid_from_datetime'),
+                    to_timestamp(lit("9999-12-31 23:59:59"),'yyyy-MM-dd HH:mm:ss').alias('valid_to_datetime'))

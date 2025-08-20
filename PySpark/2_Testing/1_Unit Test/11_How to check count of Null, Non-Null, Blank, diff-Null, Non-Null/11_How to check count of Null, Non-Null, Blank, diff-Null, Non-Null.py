@@ -61,11 +61,13 @@ display(df_dev)
 # COMMAND ----------
 
 # DBTITLE 1,2) write to delta
-df_dev.write \
-      .format("delta") \
-      .mode("overwrite") \
-      .option("path", "/user/hive/warehouse/bronze_Nulls") \
-      .saveAsTable("tbl_NonNull_Nulls_Blank")
+# df_dev.write \
+#       .format("delta") \
+#       .mode("overwrite") \
+#       .option("path", "/user/hive/warehouse/bronze_Nulls") \
+#       .saveAsTable("tbl_NonNull_Nulls_Blank")
+
+df_dev.createOrReplaceTempView("tbl_NonNull_Nulls_Blank")
 
 # COMMAND ----------
 
@@ -331,9 +333,9 @@ display(count_values(df_dev, "department"))
 # MAGIC     COUNT(*) AS Total_Count,
 # MAGIC     COUNT(CASE WHEN OBJECT_ID IS NULL THEN 1 END) AS Null_Count,
 # MAGIC     COUNT(CASE WHEN OBJECT_ID IS NOT NULL THEN 1 END) AS Non_Null_Count,
-# MAGIC     COUNT(CASE WHEN OBJECT_ID = '' THEN 1 END) AS Blank_Count,
-# MAGIC     COUNT(CASE WHEN OBJECT_ID IS NOT NULL AND OBJECT_ID <> '' THEN 1 END) AS Valid_Non_Blank_Count,
-# MAGIC     (COUNT(CASE WHEN OBJECT_ID IS NOT NULL THEN 1 END) - COUNT(CASE WHEN OBJECT_ID = '' THEN 1 END)) AS Blank_Count_Difference,
+# MAGIC     NULL AS Blank_Count,
+# MAGIC     COUNT(CASE WHEN OBJECT_ID IS NOT NULL THEN 1 END) AS Valid_Non_Blank_Count,
+# MAGIC     NULL AS Blank_Count_Difference,
 # MAGIC     (COUNT(CASE WHEN OBJECT_ID IS NOT NULL THEN 1 END) - COUNT(CASE WHEN OBJECT_ID IS NULL THEN 1 END)) AS Null_Count_Difference
 # MAGIC FROM tbl_NonNull_Nulls_Blank
 # MAGIC
@@ -364,13 +366,13 @@ display(count_values(df_dev, "department"))
 # MAGIC UNION ALL
 # MAGIC
 # MAGIC SELECT 'Customer_ID',
-# MAGIC     COUNT(*),
-# MAGIC     COUNT(CASE WHEN Customer_ID IS NULL THEN 1 END),
-# MAGIC     COUNT(CASE WHEN Customer_ID IS NOT NULL THEN 1 END),
-# MAGIC     COUNT(CASE WHEN Customer_ID = '' THEN 1 END),
-# MAGIC     COUNT(CASE WHEN Customer_ID IS NOT NULL AND Customer_ID <> '' THEN 1 END),
-# MAGIC     (COUNT(CASE WHEN Customer_ID IS NOT NULL THEN 1 END) - COUNT(CASE WHEN Customer_ID = '' THEN 1 END)),
-# MAGIC     (COUNT(CASE WHEN Customer_ID IS NOT NULL THEN 1 END) - COUNT(CASE WHEN Customer_ID IS NULL THEN 1 END))
+# MAGIC     COUNT(*) AS Total_Count,
+# MAGIC     COUNT(CASE WHEN Customer_ID IS NULL THEN 1 END) AS Null_Count,
+# MAGIC     COUNT(CASE WHEN Customer_ID IS NOT NULL THEN 1 END) AS Non_Null_Count,
+# MAGIC     NULL AS Blank_Count,
+# MAGIC     COUNT(CASE WHEN Customer_ID IS NOT NULL THEN 1 END) AS Valid_Non_Blank_Count,
+# MAGIC     NULL AS Blank_Count_Difference,
+# MAGIC     (COUNT(CASE WHEN Customer_ID IS NOT NULL THEN 1 END) - COUNT(CASE WHEN Customer_ID IS NULL THEN 1 END)) AS Null_Count_Difference
 # MAGIC FROM tbl_NonNull_Nulls_Blank
 # MAGIC
 # MAGIC UNION ALL

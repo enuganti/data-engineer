@@ -1,0 +1,43 @@
+DROP TABLE IF EXISTS asn_acc.bronze.foreign_key;
+
+-- Child table
+CREATE TABLE asn_acc.bronze.foreign_key (
+  Id INT NOT NULL,
+  customer_id INT,
+  sale_amount DOUBLE,
+  sale_date DATE
+);
+
+INSERT INTO asn_acc.bronze.foreign_key (
+  Id,
+  customer_id,
+  sale_amount,
+  sale_date
+)
+VALUES
+  (1, 1001, 100.00, '2022-01-01'),
+  (2, 1002, 200.00, '2022-01-02'),
+  (3, 1003, 300.00, '2022-01-03'),
+  (4, 1004, 400.00, '2022-01-04'),
+  (5, 1005, 500.00, '2022-01-05');
+
+SELECT * FROM asn_acc.bronze.foreign_key;
+
+
+-- Adding a foreign key
+ALTER TABLE asn_acc.bronze.foreign_key
+ADD CONSTRAINT fk_sales_customer 
+FOREIGN KEY (customer_id) 
+REFERENCES asn_acc.bronze.primary_key(Id);
+
+
+
+-- Child table
+-- CREATE TABLE asn_acc.bronze.foreign_key (
+--   Id INT NOT NULL,
+--   customer_id INT,
+--   sale_amount DOUBLE,
+--   sale_date DATE,
+--   CONSTRAINT pk_sales PRIMARY KEY (Id),
+--   CONSTRAINT fk_sales_customer FOREIGN KEY (customer_id) REFERENCES asn_acc.bronze.primary_key(Id)
+-- );

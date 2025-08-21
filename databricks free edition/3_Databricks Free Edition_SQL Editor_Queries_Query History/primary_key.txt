@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS asn_acc.bronze.primary_key;
+
+CREATE TABLE asn_acc.bronze.primary_key (
+  Id INT NOT NULL,
+  customer_id INT,
+  sale_amount DOUBLE,
+  sale_date DATE
+);
+
+INSERT INTO asn_acc.bronze.primary_key (
+  Id,
+  customer_id,
+  sale_amount,
+  sale_date
+)
+VALUES
+  (1, 1001, 100.00, '2022-01-01'),
+  (2, 1002, 200.00, '2022-01-02'),
+  (3, 1003, 300.00, '2022-01-03'),
+  (4, 1004, 400.00, '2022-01-04'),
+  (5, 1005, 500.00, '2022-01-05');
+
+SELECT * FROM asn_acc.bronze.primary_key;
+
+ALTER TABLE asn_acc.bronze.primary_key
+ADD CONSTRAINT pk_sales PRIMARY KEY (Id);
+
+
+-- Parent table
+-- CREATE TABLE asn_acc.bronze.customers (
+--   customer_id INT NOT NULL,
+--   customer_name STRING,
+--   CONSTRAINT pk_customers PRIMARY KEY (customer_id)
+-- );

@@ -2,13 +2,22 @@
 # MAGIC %md
 # MAGIC #### How to find the number of rows where all columns are NULL?
 # MAGIC
-# MAGIC | Name	| department | Customer_ID | Change_Date | Load_Date | Status	| description |
-# MAGIC |-------|------------|-------------|-------------|-----------|--------|-------------|
-# MAGIC | null	| null	     |   null      |	null	     |  null     |  null  |   null      |
-# MAGIC | null	| null	     |   null      |	null	     |  null     |  null  |   null      |
-# MAGIC | null	| null	     |   null      |	null	     |  null     |  null  |   null      |
-# MAGIC | null	| null	     |   null      |	null	     |  null     |  null  |   null      |
-# MAGIC | null	| null	     |   null      |	null	     |  null     |  null  |   null      |
+# MAGIC | Name	   | department | Customer_ID | Change_Date | Load_Date  | Status	|   description   |
+# MAGIC |----------|------------|-------------|-------------|------------|--------|-----------------|
+# MAGIC | Jagadish |    HR      |  101        | 2024-01-05  | 2025-03-06 | Active | Employee record |
+# MAGIC | null	   | null	      |  null       |	   null	    |    null    |  null  |      null       |
+# MAGIC | Rakesh   |    HR      |  102        | 2024-01-05  | 2024-09-06 | Active | Sales record    |
+# MAGIC | Swetha   |    HR      |  103        | 2024-01-05  | 2024-07-06 | Active | Deployed        |
+# MAGIC | null	   | null	      |   null      |	   null	    |   null     |  null  |      null       |
+# MAGIC | Sandhya  |    HR      |  104        | 2024-01-05  | 2024-10-26 | Active | Distribution    |
+# MAGIC | null	   | null	      |   null      |	null	      |  null      |  null  |      null       |
+# MAGIC | Naresh   |    HR      |  105        | 2024-03-05  | 2020-06-06 | Active | Make up         |
+# MAGIC | Kamalesh |    HR      |  106        | 2024-04-05  | 2021-05-06 | Active | Hardware issue  |
+# MAGIC | null	   |  null	    |  null       |	null	      |  null      |  null  |   null          |
+# MAGIC | Rajini   |    HR      |  107        | 2024-09-05  | 2022-01-06 | Active | Supply Channel  |
+# MAGIC | Jayesh   |    HR      |  108        | 2024-07-15  | 2023-01-06 | Active | Monitoring face |
+# MAGIC | null	   |  null	    |   null      |	null	      |  null      |  null  |   null          |
+# MAGIC | Gajanan  |    HR      |  109        | 2025-01-05  | 2025-01-06 | Active | Successfully    |
 
 # COMMAND ----------
 
@@ -32,12 +41,14 @@
 # MAGIC ('Ashwin', 'Admin', 102, '2024-04-05', '2024-03-06', 'Default', 'Employee Obsent'),
 # MAGIC ('Swarna', 'Finance', 103, '2024-05-05', '2024-04-06', 'Deactivate', 'Products'),
 # MAGIC (NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+# MAGIC (NULL, 'Finance', 103, '2024-05-05', '2024-04-06', 'Deactivate', 'Products'),
 # MAGIC ('Swapna', 'IT', 104, '2024-08-10', '2024-05-12', 'Inactive', 'Resigned'),
 # MAGIC ('Praveen', 'Accounts', 105, '2024-09-05', '2024-03-06', 'Active', 'Description'),
 # MAGIC (NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 # MAGIC ('Bibin', 'Finance', 105, '2024-10-01', '2024-09-02', 'Active', 'Salary details'),
 # MAGIC ('Bharath', 'HR', 106, '2024-12-05', '2024-09-06', 'Default', 'Sales Details'),
 # MAGIC (NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+# MAGIC (NULL, 'Finance', 103, '2024-05-05', '2024-04-06', 'Deactivate', 'Products'),
 # MAGIC ('Carl', 'Admin', 104, '2024-04-11', '2024-04-15', 'Active', 'Shift change'),
 # MAGIC ('Joseph', 'Developer', 101, '2024-01-05', '2024-01-06', 'Active', 'Employee record'),
 # MAGIC (NULL, NULL, NULL, NULL, NULL, NULL, NULL),

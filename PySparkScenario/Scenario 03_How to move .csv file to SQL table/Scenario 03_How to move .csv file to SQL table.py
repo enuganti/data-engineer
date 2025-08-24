@@ -11,7 +11,7 @@ spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
 # COMMAND ----------
 
 # DBTITLE 1,Read input data
-df = spark.read.option('header',True).option('InferSchema',True).csv("/FileStore/tables/MarketPrice-1.csv")
+df = spark.read.option('header',True).option('InferSchema',True).csv("/FileStore/tables/MarketPrice.csv")
 display(df.limit(10))
 df.printSchema()
 print("Number of Rows:", df.count())
@@ -25,7 +25,35 @@ print("\nNumber of Columns:", len(df.columns))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **change data type from string to date (Start_Date, End_Date & Effective_Date)**
+# MAGIC #### How to change data type of below columns from string to date?
+# MAGIC - Start_Date
+# MAGIC - End_Date
+# MAGIC - Effective_Date
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ##### to_date()
+# MAGIC
+# MAGIC 1) Converting a **String** Column with **Default Format**.
+# MAGIC    - If your **date strings** follow the **default** format **"yyyy-MM-dd"**, you can simply apply **to_date without specifying a format**.
+# MAGIC
+# MAGIC 2) Converting a **String** Column with a **Custom Format**
+# MAGIC
+# MAGIC    - If your **date strings** are in a **different** format (e.g., **"MM/dd/yyyy"**), you **must specify the format** in the **to_date** function.
+# MAGIC
+# MAGIC |      col_name	        |         format                   | default format: yyyy-MM-dd  |  After to_date(col_name, "yyyy-MM-dd") | correct format |
+# MAGIC |-----------------------|----------------------------------|-----------------------------|----------------------------------------|----------------|
+# MAGIC | "2024-03-06"	        |  to_date("2024-03-06")           |      Matching               |         2024-03-06 (Date)              | to_date("2024-03-06") |
+# MAGIC | "06-03-2024"	        |  to_date("06-03-2024")           |      Not Matching           |       NULL (Format mismatch)           | to_date("06-03-2024", "dd-MM-yyyy") |
+# MAGIC | "2024-03-06 12:30:00" |	 to_date("2024-03-06 12:30:00")  |      Not Matching           |      2024-03-06 (Time removed)         | to_date("2024-03-06 12:30:00", "yyyy-MM-dd HH:mm:ss") |
+
+# COMMAND ----------
+
+df_eff = df.withColumn("Start_Date", to_date(col("Start_Date"))) \
+           .withColumn("End_Date", to_date(col("End_Date"))) \
+           .withColumn("Effective_Date", to_date(col("Effective_Date")))
+display(df_eff)
 
 # COMMAND ----------
 

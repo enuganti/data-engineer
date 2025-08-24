@@ -1,0 +1,268 @@
+Commodity_Index,Sensex_Id,Sensex_Name,Sensex_Category,Label_Type,Effective_Date,Start_Date,End_Date,Income,Delta_Value,Target_Id
+DISCOUNT,4,1,Top,average,6-Feb-23,14-Jan-23,6-Feb-23,1500,10,1068
+DISCOUNT,4,1,Top,average,6-Feb-23,14-Jan-23,6-Feb-23,1500,10,1071
+DISCOUNT,9,1,Top,average,8-Jan-24,7-Oct-23,8-Jan-24,1500,10,1068
+DISCOUNT,9,1,Top,average,8-Jan-24,7-Oct-23,8-Jan-24,1500,10,1071
+DISCOUNT,5,2,Top,average,6-Mar-23,7-Feb-23,6-Mar-23,1500,10,1068
+DISCOUNT,5,2,Top,average,6-Mar-23,7-Feb-23,6-Mar-23,1500,10,1071
+DISCOUNT,10,2,Top,average,6-Jan-25,9-Jan-24,6-Jan-25,1500,10,1068
+DISCOUNT,10,2,Top,average,6-Jan-25,9-Jan-24,6-Jan-25,1500,10,1071
+DISCOUNT,6,3,Top,average,6-Apr-23,7-Mar-23,6-Apr-23,1500,10,1068
+DISCOUNT,6,3,Top,average,6-Apr-23,7-Mar-23,6-Apr-23,1500,10,1071
+DISCOUNT,11,3,Top,average,6-Jan-26,7-Jan-25,6-Jan-26,1500,10,1068
+DISCOUNT,11,3,Top,average,6-Jan-26,7-Jan-25,6-Jan-26,1500,10,1071
+DISCOUNT,7,6,Top,average,6-Jul-23,7-Apr-23,6-Jul-23,1500,10,1068
+DISCOUNT,7,6,Top,average,6-Jul-23,7-Apr-23,6-Jul-23,1500,10,1071
+DISCOUNT,8,9,Top,average,6-Oct-23,7-Jul-23,6-Oct-23,1500,10,1068
+DISCOUNT,8,9,Top,average,6-Oct-23,7-Jul-23,6-Oct-23,1500,10,1071
+FXGBP,1,10,Social,Social,6-Jan-23,4-Jan-23,6-Jan-23,1600,11,1061
+FXGBP,1,10,Social,Social,6-Jan-23,4-Jan-23,6-Jan-23,1600,11,1062
+GASOLYN,73,13,FORD,medium,31-Jan-24,1-Jan-24,31-Jan-24,74,12,1065
+GASOLYN,74,14,FORD,medium,29-Feb-24,1-Feb-24,29-Feb-24,75,12,1065
+GASOLYN,75,15,FORD,medium,31-Mar-24,1-Mar-24,31-Mar-24,76,12,1065
+GASOLYN,76,16,FORD,medium,30-Apr-24,1-Apr-24,30-Apr-24,77,12,1065
+GASOLYN,77,17,FORD,medium,31-May-24,1-May-24,31-May-24,78,12,1065
+GASOLYN,78,18,FORD,medium,30-Jun-24,1-Jun-24,30-Jun-24,79,12,1065
+GASOLYN,79,19,FORD,medium,31-Jul-24,1-Jul-24,31-Jul-24,80,12,1065
+GASOLYN,80,20,FORD,medium,31-Aug-24,1-Aug-24,31-Aug-24,81,12,1065
+GASOLYN,81,21,FORD,medium,30-Sep-24,1-Sep-24,30-Sep-24,82,12,1065
+GASOLYN,82,22,FORD,medium,31-Oct-24,1-Oct-24,31-Oct-24,83,12,1065
+GASOLYN,83,23,FORD,medium,30-Nov-24,1-Nov-24,30-Nov-24,84,12,1065
+GASOLYN,84,24,FORD,medium,31-Dec-24,1-Dec-24,31-Dec-24,85,12,1065
+GASOLYN,3,2,FORD,medium,6-Jan-23,6-Jan-23,6-Jan-23,4,12,1071
+GASOLYN,4,3,FORD,medium,7-Jan-23,7-Jan-23,7-Jan-23,5,12,1071
+GASOLYN,5,4,FORD,medium,8-Jan-23,8-Jan-23,8-Jan-23,6,12,1071
+GASOLYN,64,4,FORD,medium,30-Apr-23,1-Apr-23,30-Apr-23,65,12,1071
+GASOLYN,6,5,FORD,medium,9-Jan-23,9-Jan-23,9-Jan-23,7,12,1071
+GASOLYN,65,5,FORD,medium,31-May-23,1-May-23,31-May-23,66,12,1071
+GASOLYN,66,6,FORD,medium,30-Jun-23,1-Jun-23,30-Jun-23,67,12,1071
+TUTFER,73,13,Forward,fwd-mass,31-Jan-24,1-Jan-24,31-Jan-24,74,11,1071
+TUTFER,74,13,Forward,fwd-mass,29-Feb-24,1-Feb-24,29-Feb-24,75,11,1071
+TUTFER,75,13,Forward,fwd-mass,31-Mar-24,1-Mar-24,31-Mar-24,76,11,1071
+TUTFER,76,13,Forward,fwd-mass,30-Apr-24,1-Apr-24,30-Apr-24,77,11,1065
+TUTFER,76,13,Forward,fwd-mass,30-Apr-24,1-Apr-24,30-Apr-24,77,11,1071
+TUTFER,77,13,Forward,fwd-mass,31-May-24,1-May-24,31-May-24,78,11,1065
+TUTFER,77,13,Forward,fwd-mass,31-May-24,1-May-24,31-May-24,78,11,1071
+TUTFER,78,13,Forward,fwd-mass,30-Jun-24,1-Jun-24,30-Jun-24,79,11,1065
+TUTFER,78,13,Forward,fwd-mass,30-Jun-24,1-Jun-24,30-Jun-24,79,11,1071
+TUTFER,79,13,Forward,fwd-mass,31-Jul-24,1-Jul-24,31-Jul-24,80,11,1071
+TUTFER,80,13,Forward,fwd-mass,31-Aug-24,1-Aug-24,31-Aug-24,81,11,1071
+TUTFER,81,13,Forward,fwd-mass,30-Sep-24,1-Sep-24,30-Sep-24,82,11,1071
+TUTFER,82,13,Forward,fwd-mass,31-Oct-24,1-Oct-24,31-Oct-24,83,11,1071
+TUTFER,83,13,Forward,fwd-mass,30-Nov-24,1-Nov-24,30-Nov-24,84,11,1071
+TUTFER,84,13,Forward,fwd-mass,31-Dec-24,1-Dec-24,31-Dec-24,85,11,1071
+TUTFER,6,13,Forward,fwd-mass,9-Jan-23,9-Jan-23,9-Jan-23,7,11,1071
+TUTFER,7,13,Forward,fwd-mass,10-Jan-23,10-Jan-23,10-Jan-23,8,11,1071
+THERMAL,73,13,Forward,fwd-mass,31-Jan-24,1-Jan-24,31-Jan-24,74,11,1065
+THERMAL,74,13,Forward,fwd-mass,29-Feb-24,1-Feb-24,29-Feb-24,75,11,1065
+THERMAL,75,13,Forward,fwd-mass,31-Mar-24,1-Mar-24,31-Mar-24,76,11,1065
+THERMAL,64,13,Forward,fwd-mass,30-Apr-23,1-Apr-23,30-Apr-23,65,11,1071
+THERMAL,65,13,Forward,fwd-mass,31-May-23,1-May-23,31-May-23,66,11,1071
+THERMAL,66,13,Forward,fwd-mass,30-Jun-23,1-Jun-23,30-Jun-23,67,11,1071
+Streamer,73,13,Backward,High Level,31-Jan-24,1-Jan-24,31-Jan-24,74,17,1071
+Streamer,74,14,Backward,High Level,29-Feb-24,1-Feb-24,29-Feb-24,75,17,1071
+Streamer,75,14,Backward,High Level,31-Mar-24,1-Mar-24,31-Mar-24,76,17,1071
+Streamer,76,14,Backward,High Level,30-Apr-24,1-Apr-24,30-Apr-24,77,17,1071
+Streamer,77,14,Backward,High Level,31-May-24,1-May-24,31-May-24,78,17,1071
+Streamer,78,14,Backward,High Level,30-Jun-24,1-Jun-24,30-Jun-24,79,17,1071
+Streamer,79,14,Backward,High Level,31-Jul-24,1-Jul-24,31-Jul-24,80,17,1071
+Streamer,80,15,Backward,High Level,31-Aug-24,1-Aug-24,31-Aug-24,81,17,1071
+Streamer,81,15,Backward,High Level,30-Sep-24,1-Sep-24,30-Sep-24,82,17,1071
+Streamer,82,15,Backward,High Level,31-Oct-24,1-Oct-24,31-Oct-24,83,17,1071
+Streamer,83,15,Backward,High Level,30-Nov-24,1-Nov-24,30-Nov-24,84,17,1071
+Streamer,84,15,Backward,High Level,31-Dec-24,1-Dec-24,31-Dec-24,85,17,1071
+Streamer,29,15,Backward,High Level,1-Feb-23,1-Feb-23,1-Feb-23,30,17,1071
+Streamer,30,15,Backward,High Level,2-Feb-23,2-Feb-23,2-Feb-23,31,17,1071
+Streamer,31,15,Backward,High Level,3-Feb-23,3-Feb-23,3-Feb-23,32,17,1071
+Streamer,32,15,Backward,High Level,4-Feb-23,4-Feb-23,4-Feb-23,33,17,1071
+Streamer,33,15,Backward,High Level,5-Feb-23,5-Feb-23,5-Feb-23,34,17,1071
+Streamer,34,15,Backward,High Level,6-Feb-23,6-Feb-23,6-Feb-23,35,17,1071
+Streamer,35,15,Backward,High Level,7-Feb-23,7-Feb-23,7-Feb-23,36,17,1071
+Streamer,36,15,Backward,High Level,8-Feb-23,8-Feb-23,8-Feb-23,37,17,1071
+Streamer,37,16,Backward,High Level,9-Feb-23,9-Feb-23,9-Feb-23,38,17,1071
+Streamer,38,16,Backward,High Level,10-Feb-23,10-Feb-23,10-Feb-23,39,17,1071
+Streamer,39,16,Backward,High Level,11-Feb-23,11-Feb-23,11-Feb-23,40,17,1071
+Streamer,40,16,Backward,High Level,12-Feb-23,12-Feb-23,12-Feb-23,41,17,1071
+Streamer,41,16,Backward,High Level,13-Feb-23,13-Feb-23,13-Feb-23,42,17,1071
+Streamer,42,16,Backward,High Level,14-Feb-23,14-Feb-23,14-Feb-23,43,17,1071
+Streamer,43,16,Backward,High Level,15-Feb-23,15-Feb-23,15-Feb-23,44,17,1071
+Streamer,44,16,Backward,High Level,16-Feb-23,16-Feb-23,16-Feb-23,45,17,1071
+Streamer,45,16,Backward,High Level,17-Feb-23,17-Feb-23,17-Feb-23,46,17,1071
+Streamer,46,16,Backward,High Level,18-Feb-23,18-Feb-23,18-Feb-23,47,17,1071
+Streamer,47,16,Backward,High Level,19-Feb-23,19-Feb-23,19-Feb-23,48,17,1071
+Streamer,48,16,Backward,High Level,20-Feb-23,20-Feb-23,20-Feb-23,49,17,1071
+Streamer,49,18,Backward,High Level,21-Feb-23,21-Feb-23,21-Feb-23,50,17,1071
+Streamer,50,18,Backward,High Level,22-Feb-23,22-Feb-23,22-Feb-23,51,17,1071
+Streamer,51,18,Backward,High Level,23-Feb-23,23-Feb-23,23-Feb-23,52,17,1071
+Streamer,52,18,Backward,High Level,24-Feb-23,24-Feb-23,24-Feb-23,53,17,1071
+Streamer,53,18,Backward,High Level,25-Feb-23,25-Feb-23,25-Feb-23,54,17,1071
+Streamer,54,18,Backward,High Level,26-Feb-23,26-Feb-23,26-Feb-23,55,17,1071
+Streamer,55,18,Backward,High Level,27-Feb-23,27-Feb-23,27-Feb-23,56,17,1071
+Streamer,56,18,Backward,High Level,28-Feb-23,28-Feb-23,28-Feb-23,57,17,1071
+Roll-Royce,69,69,Futures,future,14-Mar-23,14-Mar-23,14-Mar-23,64,13,1061
+PVC,64,4,Forward,fwd-mass,30-Apr-23,1-Apr-23,30-Apr-23,65,65,1071
+PVC,65,5,Forward,fwd-mass,31-May-23,1-May-23,31-May-23,66,65,1071
+PVC,66,6,Forward,fwd-mass,30-Jun-23,1-Jun-23,30-Jun-23,67,65,1071
+Eurostar,73,13,Forward,fwdm,31-Jan-24,1-Jan-24,31-Jan-24,74,51,1065
+Eurostar,74,14,Forward,fwdm,29-Feb-24,1-Feb-24,29-Feb-24,75,51,1065
+Eurostar,75,15,Forward,fwdm,31-Mar-24,1-Mar-24,31-Mar-24,76,51,1065
+Eurostar,76,16,Forward,fwdm,30-Apr-24,1-Apr-24,30-Apr-24,77,51,1065
+Eurostar,77,17,Forward,fwdm,31-May-24,1-May-24,31-May-24,78,51,1065
+Eurostar,78,18,Forward,fwdm,30-Jun-24,1-Jun-24,30-Jun-24,79,51,1065
+Eurostar,79,19,Forward,fwdm,31-Jul-24,1-Jul-24,31-Jul-24,80,51,1065
+Eurostar,80,20,Forward,fwdm,31-Aug-24,1-Aug-24,31-Aug-24,81,51,1065
+Eurostar,81,21,Forward,fwdm,30-Sep-24,1-Sep-24,30-Sep-24,82,51,1065
+Eurostar,82,22,Forward,fwdm,31-Oct-24,1-Oct-24,31-Oct-24,83,51,1065
+Eurostar,83,23,Forward,fwdm,30-Nov-24,1-Nov-24,30-Nov-24,84,51,1065
+Eurostar,84,24,Forward,fwdm,31-Dec-24,1-Dec-24,31-Dec-24,85,51,1065
+PSEUDO,29,28,ENDOWER,Backwardless,1-Feb-23,1-Feb-23,1-Feb-23,30,123,1071
+PSEUDO,30,28,ENDOWER,Backwardless,2-Feb-23,2-Feb-23,2-Feb-23,31,123,1071
+PSEUDO,31,28,ENDOWER,Backwardless,3-Feb-23,3-Feb-23,3-Feb-23,32,123,1071
+PSEUDO,32,28,ENDOWER,Backwardless,4-Feb-23,4-Feb-23,4-Feb-23,33,123,1071
+PSEUDO,33,28,ENDOWER,Backwardless,5-Feb-23,5-Feb-23,5-Feb-23,34,123,1071
+PSEUDO,34,28,ENDOWER,Backwardless,6-Feb-23,6-Feb-23,6-Feb-23,35,123,1071
+PSEUDO,35,28,ENDOWER,Backwardless,7-Feb-23,7-Feb-23,7-Feb-23,36,123,1071
+PSEUDO,36,28,ENDOWER,Backwardless,8-Feb-23,8-Feb-23,8-Feb-23,37,123,1071
+PSEUDO,37,28,ENDOWER,Backwardless,9-Feb-23,9-Feb-23,9-Feb-23,38,123,1071
+PSEUDO,38,28,ENDOWER,Backwardless,10-Feb-23,10-Feb-23,10-Feb-23,39,123,1071
+PSEUDO,39,28,ENDOWER,Backwardless,11-Feb-23,11-Feb-23,11-Feb-23,40,123,1071
+PSEUDO,40,28,ENDOWER,Backwardless,12-Feb-23,12-Feb-23,12-Feb-23,41,123,1071
+PSEUDO,41,28,ENDOWER,Backwardless,13-Feb-23,13-Feb-23,13-Feb-23,42,123,1071
+PSEUDO,42,28,ENDOWER,Backwardless,14-Feb-23,14-Feb-23,14-Feb-23,43,123,1071
+PSEUDO,43,28,ENDOWER,Backwardless,15-Feb-23,15-Feb-23,15-Feb-23,44,123,1071
+PSEUDO,44,43,ENDOWER,Backwardless,16-Feb-23,16-Feb-23,16-Feb-23,45,123,1071
+PSEUDO,45,43,ENDOWER,Backwardless,17-Feb-23,17-Feb-23,17-Feb-23,46,123,1071
+PSEUDO,46,43,ENDOWER,Backwardless,18-Feb-23,18-Feb-23,18-Feb-23,47,123,1071
+PSEUDO,47,43,ENDOWER,Backwardless,19-Feb-23,19-Feb-23,19-Feb-23,48,123,1071
+PSEUDO,48,43,ENDOWER,Backwardless,20-Feb-23,20-Feb-23,20-Feb-23,49,123,1071
+PSEUDO,49,43,ENDOWER,Backwardless,21-Feb-23,21-Feb-23,21-Feb-23,50,123,1071
+PSEUDO,50,43,ENDOWER,Backwardless,22-Feb-23,22-Feb-23,22-Feb-23,51,123,1071
+PSEUDO,51,43,ENDOWER,Backwardless,23-Feb-23,23-Feb-23,23-Feb-23,52,123,1071
+PSEUDO,52,43,ENDOWER,Backwardless,24-Feb-23,24-Feb-23,24-Feb-23,53,123,1071
+PSEUDO,53,43,ENDOWER,Backwardless,25-Feb-23,25-Feb-23,25-Feb-23,54,123,1071
+PSEUDO,54,43,ENDOWER,Backwardless,26-Feb-23,26-Feb-23,26-Feb-23,55,123,1071
+PSEUDO,55,43,ENDOWER,Backwardless,27-Feb-23,27-Feb-23,27-Feb-23,56,123,1071
+PSEUDO,56,43,ENDOWER,Backwardless,28-Feb-23,28-Feb-23,28-Feb-23,57,123,1071
+Basement,73,31,Medium price,Forward,31-Jan-24,1-Jan-24,31-Jan-24,74,0.01,1068
+Basement,74,31,Medium price,Forward,29-Feb-24,1-Feb-24,29-Feb-24,75,0.01,1068
+Basement,75,31,Medium price,Forward,31-Mar-24,1-Mar-24,31-Mar-24,76,0.01,1068
+Basement,76,31,Medium price,Forward,30-Apr-24,1-Apr-24,30-Apr-24,77,0.01,1068
+Basement,76,31,Medium price,Forward,30-Apr-24,1-Apr-24,30-Apr-24,77,0.01,1068
+Basement,77,31,Medium price,Forward,31-May-24,1-May-24,31-May-24,78,0.01,1068
+Basement,78,31,Medium price,Forward,30-Jun-24,1-Jun-24,30-Jun-24,79,0.01,1068
+Basement,79,31,Medium price,Forward,31-Jul-24,1-Jul-24,31-Jul-24,80,0.01,1068
+Basement,80,31,Medium price,Forward,31-Aug-24,1-Aug-24,31-Aug-24,81,0.01,1068
+Basement,81,31,Medium price,Forward,30-Sep-24,1-Sep-24,30-Sep-24,82,0.01,1068
+Basement,82,31,Medium price,Forward,31-Oct-24,1-Oct-24,31-Oct-24,83,0.01,1068
+Basement,83,31,Medium price,Forward,30-Nov-24,1-Nov-24,30-Nov-24,84,0.01,1068
+Basement,84,31,Medium price,Forward,31-Dec-24,1-Dec-24,31-Dec-24,85,0.01,1068
+Basement,28,28,Medium price,Forward,1-Feb-23,1-Feb-23,1-Feb-23,29,0.01,1068
+Basement,29,28,Medium price,Forward,2-Feb-23,2-Feb-23,2-Feb-23,30,0.01,1068
+Basement,2,28,Medium price,Forward,6-Jan-23,6-Jan-23,6-Jan-23,3,0.01,1068
+Basement,30,28,Medium price,Forward,3-Feb-23,3-Feb-23,3-Feb-23,31,0.01,1068
+Basement,90,28,Medium price,Forward,30-Jun-25,1-Jun-25,30-Jun-25,91,0.01,1063
+Basement,31,28,Medium price,Forward,4-Feb-23,4-Feb-23,4-Feb-23,32,0.01,1068
+Basement,32,28,Medium price,Forward,5-Feb-23,5-Feb-23,5-Feb-23,33,0.01,1068
+Basement,33,28,Medium price,Forward,6-Feb-23,6-Feb-23,6-Feb-23,34,0.01,1068
+Basement,34,28,Medium price,Forward,7-Feb-23,7-Feb-23,7-Feb-23,35,0.01,1068
+Basement,35,28,Medium price,Forward,8-Feb-23,8-Feb-23,8-Feb-23,36,0.01,1068
+Basement,36,28,Medium price,Forward,9-Feb-23,9-Feb-23,9-Feb-23,37,0.01,1068
+Basement,96,28,Medium price,Forward,31-Dec-25,1-Dec-25,31-Dec-25,97,0.01,1063
+Basement,37,28,Medium price,Forward,10-Feb-23,10-Feb-23,10-Feb-23,38,0.01,1068
+Basement,38,38,Medium price,Forward,11-Feb-23,11-Feb-23,11-Feb-23,39,0.01,1068
+Basement,39,38,Medium price,Forward,12-Feb-23,12-Feb-23,12-Feb-23,40,0.01,1068
+Basement,63,38,Medium price,Forward,31-Mar-23,1-Mar-23,31-Mar-23,64,0.01,1068
+Basement,40,38,Medium price,Forward,13-Feb-23,13-Feb-23,13-Feb-23,41,0.01,1068
+Basement,41,38,Medium price,Forward,14-Feb-23,14-Feb-23,14-Feb-23,42,0.01,1068
+Basement,42,38,Medium price,Forward,15-Feb-23,15-Feb-23,15-Feb-23,43,0.01,1068
+Basement,43,38,Medium price,Forward,16-Feb-23,16-Feb-23,16-Feb-23,44,0.01,1068
+Basement,44,38,Medium price,Forward,17-Feb-23,17-Feb-23,17-Feb-23,45,0.01,1068
+Basement,45,38,Medium price,Forward,18-Feb-23,18-Feb-23,18-Feb-23,46,0.01,1068
+Basement,46,38,Medium price,Forward,19-Feb-23,19-Feb-23,19-Feb-23,47,0.01,1068
+Basement,47,38,Medium price,Forward,20-Feb-23,20-Feb-23,20-Feb-23,48,0.01,1068
+Basement,48,38,Medium price,Forward,21-Feb-23,21-Feb-23,21-Feb-23,49,0.01,1068
+Basement,49,38,Medium price,Forward,22-Feb-23,22-Feb-23,22-Feb-23,50,0.01,1068
+Basement,64,38,Medium price,Forward,30-Apr-23,1-Apr-23,30-Apr-23,65,0.01,1068
+Basement,50,38,Medium price,Forward,23-Feb-23,23-Feb-23,23-Feb-23,51,0.01,1068
+Basement,51,38,Medium price,Forward,24-Feb-23,24-Feb-23,24-Feb-23,52,0.01,1068
+Basement,52,38,Medium price,Forward,25-Feb-23,25-Feb-23,25-Feb-23,53,0.01,1068
+Basement,53,53,Medium price,Forward,26-Feb-23,26-Feb-23,26-Feb-23,54,0.01,1068
+Basement,54,53,Medium price,Forward,27-Feb-23,27-Feb-23,27-Feb-23,55,0.01,1068
+Basement,55,53,Medium price,Forward,28-Feb-23,28-Feb-23,28-Feb-23,56,0.01,1068
+Basement,65,53,Medium price,Forward,31-May-23,1-May-23,31-May-23,66,0.01,1063
+Basement,65,53,Medium price,Forward,31-May-23,1-May-23,31-May-23,66,0.01,1068
+Basement,66,53,Medium price,Forward,30-Jun-23,1-Jun-23,30-Jun-23,67,0.01,1068
+Basement,67,53,Medium price,Forward,31-Jul-23,1-Jul-23,31-Jul-23,68,0.01,1068
+Peaknl,83,23,Forward,fwd-m,30-Nov-24,1-Nov-24,30-Nov-24,84,43,1063
+Peaknl,65,5,Forward,fwd-m,31-May-23,1-May-23,31-May-23,66,43,1063
+UK_Base,70,10,Forward,ghffwd-m,31-Oct-23,1-Oct-23,31-Oct-23,71,0.11,1062
+UK_Base,73,10,Forward,ghffwd-m,31-Jan-24,1-Jan-24,31-Jan-24,74,0.11,1062
+UK_Base,75,10,Forward,ghffwd-m,31-Mar-24,1-Mar-24,31-Mar-24,76,0.11,1062
+UK_Base,76,10,Forward,ghffwd-m,30-Apr-24,1-Apr-24,30-Apr-24,77,0.11,1062
+UK_Base,77,10,Forward,ghffwd-m,31-May-24,1-May-24,31-May-24,78,0.11,1062
+UK_Base,80,10,Forward,ghffwd-m,31-Aug-24,1-Aug-24,31-Aug-24,81,0.11,1062
+UK_Base,81,10,Forward,ghffwd-m,30-Sep-24,1-Sep-24,30-Sep-24,82,0.11,1062
+UK_Base,82,10,Forward,ghffwd-m,31-Oct-24,1-Oct-24,31-Oct-24,83,0.11,1062
+UK_Base,84,10,Forward,ghffwd-m,31-Dec-24,1-Dec-24,31-Dec-24,85,0.11,1062
+UK_Base,85,10,Forward,ghffwd-m,31-Jan-25,1-Jan-25,31-Jan-25,86,0.11,1062
+UK_Base,67,10,Forward,ghffwd-m,31-Jul-23,1-Jul-23,31-Jul-23,68,0.11,1062
+UK_Base,68,10,Forward,ghffwd-m,31-Aug-23,1-Aug-23,31-Aug-23,69,0.11,1062
+UK_Base,69,10,Forward,ghffwd-m,30-Sep-23,1-Sep-23,30-Sep-23,70,0.11,1062
+UK_Peak_Level,70,23,Forward,afterfwd-m,31-Oct-23,1-Oct-23,31-Oct-23,71,9,1062
+UK_Peak_Level,73,23,Forward,afterfwd-m,31-Jan-24,1-Jan-24,31-Jan-24,74,9,1062
+UK_Peak_Level,74,23,Forward,afterfwd-m,29-Feb-24,1-Feb-24,29-Feb-24,75,9,1062
+UK_Peak_Level,75,23,Forward,afterfwd-m,31-Mar-24,1-Mar-24,31-Mar-24,76,9,1062
+UK_Peak_Level,76,23,Forward,afterfwd-m,30-Apr-24,1-Apr-24,30-Apr-24,77,9,1062
+UK_Peak_Level,77,23,Forward,afterfwd-m,31-May-24,1-May-24,31-May-24,78,9,1062
+UK_Peak_Level,78,23,Forward,afterfwd-m,30-Jun-24,1-Jun-24,30-Jun-24,79,9,1062
+UK_Peak_Level,79,23,Forward,afterfwd-m,31-Jul-24,1-Jul-24,31-Jul-24,80,9,1062
+UK_Peak_Level,80,23,Forward,afterfwd-m,31-Aug-24,1-Aug-24,31-Aug-24,81,9,1062
+UK_Peak_Level,81,23,Forward,afterfwd-m,30-Sep-24,1-Sep-24,30-Sep-24,82,9,1062
+UK_Peak_Level,82,23,Forward,afterfwd-m,31-Oct-24,1-Oct-24,31-Oct-24,83,9,1062
+UK_Peak_Level,83,23,Forward,afterfwd-m,30-Nov-24,1-Nov-24,30-Nov-24,84,9,1062
+UK_Peak_Level,84,23,Forward,afterfwd-m,31-Dec-24,1-Dec-24,31-Dec-24,85,9,1062
+UK_Peak_Level,85,23,Forward,afterfwd-m,31-Jan-25,1-Jan-25,31-Jan-25,86,9,1062
+UK_Peak_Level,86,23,Forward,afterfwd-m,28-Feb-25,1-Feb-25,28-Feb-25,87,9,1062
+UK_Peak_Level,87,23,Forward,afterfwd-m,31-Mar-25,1-Mar-25,31-Mar-25,88,9,1062
+UK_Peak_Level,67,23,Forward,afterfwd-m,31-Jul-23,1-Jul-23,31-Jul-23,68,9,1062
+Peak,73,29,Forward,bkwd,31-Jan-24,1-Jan-24,31-Jan-24,74,11,1068
+Peak,74,29,Forward,bkwd,29-Feb-24,1-Feb-24,29-Feb-24,75,11,1068
+Peak,75,29,Forward,bkwd,31-Mar-24,1-Mar-24,31-Mar-24,76,11,1068
+Peak,76,29,Forward,bkwd,30-Apr-24,1-Apr-24,30-Apr-24,77,11,1068
+Peak,77,29,Forward,bkwd,31-May-24,1-May-24,31-May-24,78,11,1068
+Peak,78,29,Forward,bkwd,30-Jun-24,1-Jun-24,30-Jun-24,79,11,1068
+Peak,79,29,Forward,bkwd,31-Jul-24,1-Jul-24,31-Jul-24,80,11,1068
+Peak,80,29,Forward,bkwd,31-Aug-24,1-Aug-24,31-Aug-24,81,11,1068
+Peak,81,29,Forward,bkwd,30-Sep-24,1-Sep-24,30-Sep-24,82,11,1068
+Peak,82,29,Forward,bkwd,31-Oct-24,1-Oct-24,31-Oct-24,83,11,1068
+Peak,83,29,Forward,bkwd,30-Nov-24,1-Nov-24,30-Nov-24,84,11,1068
+Peak,84,29,Forward,bkwd,31-Dec-24,1-Dec-24,31-Dec-24,85,11,1068
+Peak,28,29,Forward,bkwd,1-Feb-23,1-Feb-23,1-Feb-23,29,11,1068
+Peak,29,29,Forward,bkwd,2-Feb-23,2-Feb-23,2-Feb-23,30,11,1068
+Peak,2,29,Forward,bkwd,6-Jan-23,6-Jan-23,6-Jan-23,3,11,1068
+Peak,30,29,Forward,bkwd,3-Feb-23,3-Feb-23,3-Feb-23,31,11,1068
+Peak,90,29,Forward,bkwd,30-Jun-25,1-Jun-25,30-Jun-25,91,11,1063
+Peak,33,29,Forward,bkwd,6-Feb-23,6-Feb-23,6-Feb-23,34,11,1068
+Peak,34,29,Forward,bkwd,7-Feb-23,7-Feb-23,7-Feb-23,35,11,1068
+Peak,35,29,Forward,bkwd,8-Feb-23,8-Feb-23,8-Feb-23,36,11,1068
+Peak,36,29,Forward,bkwd,9-Feb-23,9-Feb-23,9-Feb-23,37,11,1068
+Peak,96,29,Forward,bkwd,31-Dec-25,1-Dec-25,31-Dec-25,97,11,1063
+Peak,37,29,Forward,bkwd,10-Feb-23,10-Feb-23,10-Feb-23,38,11,1068
+Peak,63,29,Forward,bkwd,31-Mar-23,1-Mar-23,31-Mar-23,64,11,1068
+Peak,40,29,Forward,bkwd,13-Feb-23,13-Feb-23,13-Feb-23,41,11,1068
+Peak,41,29,Forward,bkwd,14-Feb-23,14-Feb-23,14-Feb-23,42,11,1068
+Peak,42,29,Forward,bkwd,15-Feb-23,15-Feb-23,15-Feb-23,43,11,1068
+Peak,43,29,Forward,bkwd,16-Feb-23,16-Feb-23,16-Feb-23,44,11,1068
+Peak,44,29,Forward,bkwd,17-Feb-23,17-Feb-23,17-Feb-23,45,11,1068
+Peak,47,29,Forward,bkwd,20-Feb-23,20-Feb-23,20-Feb-23,48,11,1068
+Peak,48,29,Forward,bkwd,21-Feb-23,21-Feb-23,21-Feb-23,49,11,1068
+Peak,49,29,Forward,bkwd,22-Feb-23,22-Feb-23,22-Feb-23,50,11,1068
+Peak,64,29,Forward,bkwd,30-Apr-23,1-Apr-23,30-Apr-23,65,11,1068
+Peak,50,29,Forward,bkwd,23-Feb-23,23-Feb-23,23-Feb-23,51,11,1068
+Peak,51,29,Forward,bkwd,24-Feb-23,24-Feb-23,24-Feb-23,52,11,1068
+Peak,54,29,Forward,bkwd,27-Feb-23,27-Feb-23,27-Feb-23,55,11,1068
+Peak,55,29,Forward,bkwd,28-Feb-23,28-Feb-23,28-Feb-23,56,11,1068
+Peak,65,29,Forward,bkwd,31-May-23,1-May-23,31-May-23,66,11,1063
+Peak,65,29,Forward,bkwd,31-May-23,1-May-23,31-May-23,66,11,1068
+Peak,66,29,Forward,bkwd,30-Jun-23,1-Jun-23,30-Jun-23,67,11,1068
+Peak,67,29,Forward,bkwd,31-Jul-23,1-Jul-23,31-Jul-23,68,11,1068

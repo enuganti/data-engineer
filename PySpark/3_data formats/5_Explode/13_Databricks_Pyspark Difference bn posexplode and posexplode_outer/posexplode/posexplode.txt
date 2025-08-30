@@ -1,0 +1,7 @@
+S.No|EmpName|Dept|Technology|Age|Year
+1|Sundar|Azure|ADB, ADF, PySpark, SQL|30|2022
+2|Sheetal|Azure|None, ADF, PySpark, SQL|35|2023
+3|Amar|Azure|ADB, None, PySpark|40|2021
+4|Rakesh|Azure|ADB, ADF|33|2023
+5|Royal|Azure|ADB, None|35|2022
+6|Swapnil|AWS||38|2002

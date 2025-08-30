@@ -1,0 +1,71 @@
+from pyspark.sql.functions import col, explode, posexplode_outer, split
+import pyspark.sql.functions as f
+
+
+# Array Type
+------------
+
+
+data = [(1, "Suresh", [".net", "Python", "Spark", "Azure"]),
+        (2, "Ramya", ["java", "PySpark", "AWS"]),
+        (3, "Rakesh", ["ADF", "SQL", None, "GCC"]),
+        (4, "Apurba", ["C", "SAP", None]),
+        (5, "Pranitha", ["COBOL", "DEVOPS"]),
+        (6, "Sowmya", ["ABAP", None]),
+        (7, "Anand", None),
+        (8, "Sourabh", [])]
+schema = ["id", "Name", "skills"]
+
+df = spark.createDataFrame(data, schema)
+df.show(truncate=False)
+display(df)
+df.printSchema()
+print("Number of Rows:", df.count())
+
+
+
+display(df.select(df.Name, posexplode_outer(df.skills)))
+
+
+
+# Map Type
+----------
+
+
+data1 = [('Raja', {'TV':'LG', 'Refrigerator':'Samsung', 'Oven':'Philips', 'AC':'Voltas'}),
+        ('Raghav', {'AC':'Samsung', 'Washing machine': 'LG'}),
+        ('Ram', {'Grinder':'Preeti', 'TV':""}),
+        ('Ramesh', {'Refrigerator':'LG', 'TV':'Croma'}),
+        ('Rajesh', None)]
+
+schema1 = ['name', 'brand']
+
+df1 = spark.createDataFrame(data=data1, schema=schema1)
+display(df1)
+df1.show(truncate=False)
+df1.printSchema()
+print("Number of Rows:", df1.count())
+
+
+
+display(df1.select(df1.name, df1.brand, posexplode_outer(df1.brand)))
+
+
+# .txt
+-------
+
+df2 = spark.read.csv("/FileStore/tables/posexplode.txt", sep="|", header=True, inferSchema=True)
+display(df2)
+
+
+df2 = df2.withColumn("New_Technology", split(("Technology"), ',')).select('EmpName', 'Dept', 'Technology', 'New_Technology')
+display(df2)
+
+
+df3 = df2.select("*", posexplode_outer("New_Technology"))
+display(df3)
+
+# df3 = df2.select("*", posexplode_outer(split(("Technology"), ',')))
+# display(df3)
+
+

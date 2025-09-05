@@ -9,6 +9,14 @@
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC      get_json_object()
+# MAGIC      parse_json()
+# MAGIC      json_tuple()
+# MAGIC      from_json
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC #### Syntax
 # MAGIC
 # MAGIC      get_json_object(col("json_column"), "$.path")
@@ -56,7 +64,7 @@ data = [
 
 df_sjson = spark.createDataFrame(data, ["json_string"])
 
-df_simple_json = df_sjson.select(
+df_simple_json = df_sjson.select('json_string',
     get_json_object(col("json_string"), "$.name").alias("Name"),
     get_json_object(col("json_string"), "$.age").alias("Age"),
     get_json_object(col("json_string"), "$.city").alias("City")
@@ -115,7 +123,7 @@ array_data = [
 
 df_array = spark.createDataFrame(array_data, ["json_string"])
 
-df_array_result = df_array.select(
+df_array_result = df_array.select('json_string',
     get_json_object(col("json_string"), "$.id").alias("ID"),
     get_json_object(col("json_string"), "$.hobbies[0]").alias("Hobby1"),
     get_json_object(col("json_string"), "$.hobbies[1]").alias("Hobby2"),
@@ -147,8 +155,11 @@ display(df_get)
 # Extract JSON values
 df_get_obj = df_get\
     .withColumn('ATTR_INT_0', get_json_object('json_col', '$[0].Attr_INT')) \
-    .withColumn('ATTR_DOUBLE_1', get_json_object('json_col', '$[0].ATTR_DATE')) \
-    .withColumn('ATTR_DATE_2', get_json_object('json_col', '$[0].ATTR_DATE'))
+    .withColumn('ATTR_DOUBLE_1', get_json_object('json_col', '$[0].ATTR_DOUBLE')) \
+    .withColumn('ATTR_DATE_2', get_json_object('json_col', '$[0].ATTR_DATE')) \
+    .withColumn('ATTR_INT_3', get_json_object('json_col', '$[3].Attr_INT')) \
+    .withColumn('ATTR_DOUBLE_3', get_json_object('json_col', '$[3].ATTR_DOUBLE')) \
+    .withColumn('ATTR_DATE_3', get_json_object('json_col', '$[3].ATTR_DATE'))
 
 display(df_get_obj)
 
@@ -159,7 +170,7 @@ display(df_get_obj)
 # MAGIC
 # MAGIC | Feature           | `parse_json`                                                 | `get_json_object`                                   |
 # MAGIC | ----------------- | ------------------------------------------------------------ | --------------------------------------------------- |
-# MAGIC | **What it does**  | Parses JSON into a **struct/variant**                        | Extracts a **string value** by JSONPath             |
+# MAGIC | **What it does**  | Parses JSON into a **variant**                        | Extracts a **string value** by JSONPath             |
 # MAGIC | **Return type**   | **Struct** (can expand into **multiple columns**)            | **String** (you must **cast** if you need **int, double**, etc.)  |
 # MAGIC | **Schema**        | **Inferred** (flexible, can be used like a DataFrame column) | Not needed (**no schema applied**)                  |
 # MAGIC | **Performance**   | Better for **multiple/nested** fields                        | Lightweight for extracting **1–2 fields**           |
@@ -241,7 +252,7 @@ schema = StructType([
 
 df_fromjson = df_diff.withColumn("json_data", from_json(col("json_string"), schema))
 
-df_fromjson.select("json_data.*").display()
+df_fromjson.select("json_string", "json_data", "json_data.*").display()
 
 # COMMAND ----------
 

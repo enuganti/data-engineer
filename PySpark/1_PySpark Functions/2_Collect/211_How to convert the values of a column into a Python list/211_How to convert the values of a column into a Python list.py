@@ -11,7 +11,7 @@
 # COMMAND ----------
 
 df = spark.read.csv("/Volumes/@azureadb/pyspark/unionby/company_level.csv", header=True, inferSchema=True)
-display(df)
+display(df.limit(15))
 
 # COMMAND ----------
 

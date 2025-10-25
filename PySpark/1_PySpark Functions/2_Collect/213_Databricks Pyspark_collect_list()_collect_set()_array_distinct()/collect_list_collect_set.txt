@@ -1,0 +1,85 @@
+
+from pyspark.sql.functions import collect_list, collect_set, array_distinct, struct
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
+import pyspark.sql.functions as f
+
+
+data = [(1, 'James','Java', 25),
+        (2, 'James','Python', 28),
+        (3, 'James','Python', 35),
+        (4, 'Anna','PHP', 29),
+        (5, 'Anna','Javascript', None),
+        (6, 'Maria','Java', 54),
+        (7, 'Maria','C++', 47),
+        (8, 'James','Scala', 35),
+        (9, 'Anna','PHP', None),
+        (10, 'Anna','HTML', 21),
+        (11, 'Anna',None, 65),
+        (12, 'Rakesh', None, None)
+       ]
+
+schema = StructType([StructField("id", IntegerType(), False),
+                     StructField("Name", StringType(), False),
+                     StructField("Languages", StringType(), True),
+                     StructField("Age", IntegerType(), True)])
+
+df = spark.createDataFrame(data=data, schema=schema)
+display(df)
+df.printSchema()
+
+
+
+Single Column: collect_list()
+-----------------------------
+
+
+df1 = df.select(collect_list("languages").alias("Languages_List"))
+display(df1)
+
+
+df1 = df.select(collect_list("Age").alias("Age_List"))
+display(df1)
+
+
+Single Column: collect_set()
+----------------------------
+
+
+df2 = df.select(collect_set("languages").alias("Languages_Set"))
+display(df2)
+
+df2 = df.select(collect_set("Age").alias("Age_Set"))
+display(df2)
+
+
+
+array_distinct --> collect_list
+-------------------------------
+
+df3 = df.select(array_distinct(collect_list("languages")).alias("Languages_List"))
+display(df3)
+
+
+Single Column: groupBy with collect_list() & collect_set()
+----------------------------------------------------------
+
+df4 = df.groupBy("name").agg(collect_list("languages").alias("List_Languages"))
+display(df4)
+df4.printSchema()
+
+
+df5 = df.groupBy("name").agg(collect_set("languages").alias("Set_Languages"))
+display(df5)
+df5.printSchema() 
+
+
+Multiple Columns: groupBy --> struct --> collect_list()
+-------------------------------------------------------
+
+
+df.select("name").distinct().show()
+
+
+df6 = df.groupBy("name").agg(collect_list(struct("languages", "Age")).alias("Name_Languages"))
+display(df6)
+df6.printSchema()

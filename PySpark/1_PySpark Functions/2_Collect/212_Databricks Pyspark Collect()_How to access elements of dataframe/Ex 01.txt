@@ -1,0 +1,68 @@
+dept = [("Finance",10,"Manager"), ("Marketing",20,"Sr.Manager"), ("Sales",30,"Representative"), ("IT",40,"Software")]
+deptColumns = ["dept_name", "dept_id", "Designation"]
+
+df = spark.createDataFrame(data=dept, schema = deptColumns)
+df.show(truncate=False)
+
+
+
+# collect() is an action hence it does not return a DataFrame instead, it returns data in an Array to the driver.
+# retrieves all elements in a DataFrame as an Array of Row type to the driver node
+dataCollect = df.collect()
+print(dataCollect)
+
+
+
+
+# returns Array of Row type
+df.collect()
+
+
+
+# returns the first element in an array (1st row)
+df.collect()[0]
+#df.collect()[1]
+#df.collect()[2]
+
+
+
+
+# returns the value of the first row & first column
+df.collect[0][0]
+#df.collect[0][1]
+#df.collect[0][2]
+
+
+
+
+print(df.select("dept_name").collect())
+
+
+
+
+ # select first row
+ print(df.select(['dept_name',
+                  'dept_id',
+                  'Designation']).collect()[0])
+
+
+
+
+ # select third row
+ print(df.select(['dept_name',
+                  'dept_id',
+                  'Designation']).collect()[2])
+
+
+
+
+
+ # select forth row
+ print(df.select(['dept_name',
+                  'dept_id',
+                  'Designation']).collect()[3])
+
+
+
+
+

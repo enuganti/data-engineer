@@ -1,0 +1,185 @@
+dept = [("Finance",10,"Manager"), ("Marketing",20,"Sr.Manager"), ("Sales",30,"Representative"), ("IT",40,"Software")]
+deptColumns = ["dept_name", "dept_id", "Designation"]
+
+df = spark.createDataFrame(data=dept, schema = deptColumns)
+df.show(truncate=False)
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+# collect() is an action hence it does not return a DataFrame instead, it returns data in an Array to the driver.
+# retrieves all elements in a DataFrame as an Array of Row type to the driver node
+dataCollect = df.collect()
+print(dataCollect)
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+# returns the first element in an array (1st row)
+df.collect()[0]
+
+# returns the second element in an array (2nd row)
+#df.collect()[1]
+
+# returns the third element in an array (3rd row)
+#df.collect()[2]
+
+# returns the fourth element in an array (4th row)
+#df.collect()[3]
+
+
+---------------------------------------------------------
+
+
+# returns the value of the first row & 1st column
+df.collect()[0][0]
+
+# returns the value of the first row & 2nd column
+#df.collect()[0][1]
+
+# returns the value of the first row & 3rd column
+#df.collect()[0][2]
+
+
+----------------------------------------------------------
+
+# returns the value of the 2nd row & 1st column
+df.collect()[1][0]
+
+# returns the value of the 2nd row & 2nd column
+#df.collect()[1][1]
+
+# returns the value of the 2nd row & 3rd column
+#df.collect()[1][2]
+
+
+----------------------------------------------------------
+
+
+# returns the value of the 3rd row & 1st column
+df.collect()[2][0]
+
+# returns the value of the 3rd row & 2nd column
+#df.collect()[2][1]
+
+# returns the value of the 3rd row & 3rd column
+#df.collect()[2][2]
+
+
+-----------------------------------------------------------
+
+# returns the value of the 4th row & 1st column
+df.collect()[3][0]
+
+# returns the value of the 4th row & 2nd column
+#df.collect()[3][1]
+
+# returns the value of the 4th row & 3rd column
+#df.collect()[3][2]
+
+
+-------------------------------------------------------------
+
+print(df.select("dept_name").collect())
+
+-------------------------------------------------------------
+
+# returns the first element in an array (1st row)
+print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[0])
+
+# returns the second element in an array (2nd row)
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[1])
+
+# returns the third element in an array (3rd row)
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[2])
+
+# returns the fourth element in an array (4th row)
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[3])
+
+
+-------------------------------------------------------------------------------
+
+
+# returns the value of the first row & 1st column
+print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[0][0])
+
+# returns the value of the first row & 2nd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[0][1])
+
+# returns the value of the first row & 3rd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[0][2])
+
+
+--------------------------------------------------------------------------------
+
+# returns the value of the second row & 1st column
+print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[1][0])
+
+# returns the value of the second row & 2nd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[1][1])
+
+# returns the value of the second row & 3rd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[1][2])
+
+
+-----------------------------------------------------------------------------------
+
+
+# returns the value of the 3rd row & 1st column
+print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[2][0])
+
+# returns the value of the 3rd row & 2nd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[2][1])
+
+# returns the value of the 3rd row & 3rd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[2][2])
+
+
+-----------------------------------------------------------------------------------
+
+
+# returns the value of the 4th row & 1st column
+print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[3][0])
+
+# returns the value of the 4th row & 2nd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[3][1])
+
+# returns the value of the 4th row & 3rd column
+#print(df.select(['dept_name', 'dept_id', 'Designation']).collect()[3][2])
+
+
+-------------------------------------------------------------------------------------
+
+
+for i in dataCollect:
+    print(i['dept_name'])
+    
+
+# for i in dataCollect:
+#     print(i[0])
+
+
+----------------------------------
+
+
+for i in dataCollect:
+    print(i['dept_id'])
+
+
+# for i in dataCollect:
+#     print(i[1])
+
+
+------------------------------------
+
+
+for i in dataCollect:
+    print(i['Designation'])
+
+
+# for i in dataCollect:
+#     print(i[2])
+
+
+---------------------------------

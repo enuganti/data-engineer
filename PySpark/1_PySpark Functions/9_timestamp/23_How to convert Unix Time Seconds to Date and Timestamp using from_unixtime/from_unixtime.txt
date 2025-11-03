@@ -1,9 +1,0 @@
-  df_final  = df.select(to_timestamp(from_unixtime(col("deal_trade_datetime"),'yyyy-MM-dd HH:mm:ss')).alias('deal_trade_datetime'),
-                        to_timestamp(from_unixtime(col("Data.Party_Input_Timestamp"),'yyyy-MM-dd HH:mm:ss')).alias('party_input_timestamp'),
-                        to_timestamp(from_unixtime(col("Data.Party_Last_Update_Timestamp"),'yyyy-MM-dd HH:mm:ss')).alias('party_last_update_timestamp'))
-
-
-
-                to_timestamp(from_unixtime(col("Data.DEAL.Deal_Input_Timestamp_UTC")/1000,'yyyy-MM-dd HH:mm:ss')).alias('deal_input_timestamp_utc'),
-                to_timestamp(from_unixtime(col("Data.DEAL.Deal_Execution_Timestamp_UTC")/1000,'yyyy-MM-dd HH:mm:ss')).alias('deal_execution_timestamp_utc'),
-                to_timestamp(from_unixtime(col("Data.DEAL.Last_Update_Timestamp_UTC")/1000,'yyyy-MM-dd HH:mm:ss')).alias('last_update_timestamp_utc')

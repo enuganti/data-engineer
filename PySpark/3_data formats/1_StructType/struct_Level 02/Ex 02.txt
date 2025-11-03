@@ -1,0 +1,42 @@
+from pyspark.sql.functions import struct, col
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
+import pyspark.sql.functions as f
+
+df = spark.read.csv("/FileStore/tables/StructType.csv", header=True, inferSchema=True)
+display(df)
+
+----------------------------------------------------------------------------------------------
+
+sales_df_final = df.select(f.struct(
+                     f.col('Id'),
+                     f.col('Nick_Name'),
+                     f.col('First_Name'),
+                     f.col('Last_Name'),
+                     f.col('Type'),
+                     f.col('Age')
+                     ).alias('Sales')
+                     )
+
+display(sales_df_final)
+
+---------------------------------------------------------------------------------------------
+
+df_final = sales_df_final.withColumn('message', f.to_json('Sales'))
+df_final.display()
+
+
+
+df_schema = StructType([StructField('Id', IntegerType(), False),
+                        StructField('Nick_Name', StringType(), False),
+                        StructField('First_Name', StringType(), False),
+                        StructField('Last_Name', StringType(), False),
+                        StructField('Type', StringType(), False),
+                        StructField('Age', IntegerType(), False)
+                        ])
+
+
+
+df_final = df_final.select(f.from_json('message', df_schema).alias('kafka_message'))
+display(df_final)
+
+--------------------------------------------------------------------------------------------

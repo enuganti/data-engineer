@@ -1,0 +1,44 @@
+from pyspark.sql.functions import struct, col
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
+import pyspark.sql.functions as f
+
+------------------------------------------------------------------------------------
+
+data = [(1, "Marry", "Terissa"), (2, "Kapil", "Sharma"), (3, "Niraj", "Gupta"), (4, "Amit", "Jain")]
+
+schema = StructType([StructField("S.No", IntegerType(), False),
+                     StructField("First_Name", StringType(), False),
+                     StructField("Last_Name", StringType(), False)])
+
+dff = spark.createDataFrame(data, schema=schema)
+display(dff)
+
+------------------------------------------------------------------------------------
+
+# using withColumn method
+df1 = dff.withColumn("Name", struct("First_Name", "Last_Name"))
+display(df1)
+
+
+# using Select method 01
+df2 = dff.select("*", struct("First_Name", "Last_Name").alias("Name"))
+display(df2)
+
+
+# using Select method 02
+df3 = dff.select("*", struct(["First_Name", "Last_Name"]).alias("Name"))
+display(df3)
+
+
+# using Select method 03
+df4 = dff.select("*", struct([col("First_Name"), col("Last_Name")]).alias("Name"))
+display(df4)
+
+
+# using Select method 04
+cols = ("First_Name", "Last_Name")
+df5 = dff.select("*", struct(*cols).alias("Name"))
+display(df5)
+
+
+-----------------------------------------------------------------------------------------

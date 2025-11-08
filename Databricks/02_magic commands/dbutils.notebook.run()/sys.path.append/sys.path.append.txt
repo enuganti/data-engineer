@@ -1,0 +1,62 @@
+
+sys.path.append(os.path.abspath('/Workspace/trmds/pyspark/Raw/'))
+from Kafkastream import *
+
+
+
+import os:
+----------
+
+import os
+print(dir(os))
+print(os.getcwd())
+
+# change the current working directory 
+os.chdir("/databricks/spark/python")
+
+print(os.getcwd())
+
+
+print(os.listdir())
+
+print(type(os.listdir()))
+
+print(os.listdir('/Workspace/Repos/s.anuganti@shell.com/trm-ds-datapipelines-adb/trmds/pyspark/landing'))
+
+
+print(os.makedirs("Sureshasn"))
+
+
+os.rename("harry.txt", "codewithharry.txt")
+
+
+
+dir(os.path)
+
+help(os.path.abspath)
+
+os.path.abspath('KafkaSchemaRegistry_py')
+
+Output: '/Workspace/Repos/s.anuganti@shell.com/trm-ds-datapipelines-adb/trmds/pyspark/Enriched/Endur/KafkaSchemaRegistry_py'
+
+
+
+import sys:
+-----------
+
+import sys
+print(sys.path)
+
+sys.path[0]
+sys.path[-5]
+
+
+sys.path.append('/Workspace/trmds/pyspark/landing')
+
+
+sys.path.append(os.path.abspath('/Workspace/trmds/pyspark/Raw/'))
+
+
+sys.path.append(os.path.abspath('/Workspace/trmds/pyspark/Raw/'))
+from Kafkastream import *
+

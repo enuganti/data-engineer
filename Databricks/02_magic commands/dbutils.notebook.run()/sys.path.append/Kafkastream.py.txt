@@ -1,0 +1,85 @@
+from databricks.sdk.runtime import *
+from pyspark.sql.avro.functions import from_avro
+from pyspark.sql.types import StructType,StringType
+import pyspark.sql.functions as fn
+from pyspark.sql.functions import lit
+import os,sys
+sys.path.append(os.path.abspath('/Workspace/trmds/pyspark/common'))
+from ConFigReader_py import *
+sys.path.append(os.path.abspath('/Workspace/trmds/pyspark/landing'))
+from KafkaSchemaRegistry_py import *
+confluentClusterName = getConfluentClusterName()
+confluentBootstrapServers = getKafkaBootStrapSserver()
+
+kv_scope = getKVScope()
+print(kv_scope)
+confluentApiKey = getKafkaApiKey()
+api_key = dbutils.secrets.get(scope = kv_scope, key = confluentApiKey)       
+
+confluentSecret =  getKafkaApiSecret()
+api_key_secret = dbutils.secrets.get(scope = kv_scope, key = confluentSecret)       
+
+confluentApiKey = api_key
+confluentSecret = api_key_secret
+print(confluentApiKey)
+print(confluentSecret)
+
+
+
+root_folder = getDataRootFolder()
+print(root_folder)
+
+#import uuid
+group_id = getKafkaGroupId()
+
+binary_to_string = fn.udf(lambda x: str(int.from_bytes(x, byteorder='big')), StringType())
+
+def rawdata(confluentTopicName):
+    schema_val = getLatestSchemaViaConFluentClient(confluentTopicName)
+    raw_data=(
+    spark
+    .readStream
+    .format("kafka")
+    .option("kafka.bootstrap.servers", confluentBootstrapServers)
+    .option("kafka.group.id", group_id)
+    .option("kafka.security.protocol", "SASL_SSL")
+    .option("kafka.sasl.jaas.config", "kafkashaded.org.apache.kafka.common.security.plain.PlainLoginModule required username='{}' password='{}';".format(confluentApiKey, confluentSecret))
+    .option("kafka.ssl.endpoint.identification.algorithm", "https")
+    .option("kafka.sasl.mechanism", "PLAIN")
+    .option("subscribe", confluentTopicName)
+    .option("startingOffsets", "earliest")
+    .option("failOnDataLoss", "false")
+    .load())
+    raw_data=raw_data.\
+                withColumn('key', fn.col("key").cast(StringType())).\
+                withColumn("fixedvalue",fn.expr("substring(value,6,length(value)-5)")).\
+                withColumn('Data',from_avro(fn.col("fixedValue"),schema_val)).\
+                select('timestamp', 'key', 'Data')
+    
+    return raw_data
+
+
+def rawdata_v1(confluentTopicName,cores="24"):
+    schema_val = getLatestSchemaViaConFluentClient(confluentTopicName)
+    raw_data=(
+    spark
+    .readStream
+    .format("kafka")
+    .option("kafka.bootstrap.servers", confluentBootstrapServers)
+    .option("kafka.group.id", group_id)
+    .option("kafka.security.protocol", "SASL_SSL")
+    .option("kafka.sasl.jaas.config", "kafkashaded.org.apache.kafka.common.security.plain.PlainLoginModule required username='{}' password='{}';".format(confluentApiKey, confluentSecret))
+    .option("kafka.ssl.endpoint.identification.algorithm", "https")
+    .option("kafka.sasl.mechanism", "PLAIN")
+    .option("subscribe", confluentTopicName)
+    .option("minPartitions",cores)
+    .option("startingOffsets", "earliest")
+    .option("failOnDataLoss", "false")
+    .load())
+    raw_data=raw_data.\
+                withColumn('key', fn.col("key").cast(StringType())).\
+                withColumn("fixedvalue",fn.expr("substring(value,6,length(value)-5)")).\
+                withColumn('Data',from_avro(fn.col("fixedValue"),schema_val)).\
+                select('timestamp', 'key', 'Data')
+    
+    return raw_data

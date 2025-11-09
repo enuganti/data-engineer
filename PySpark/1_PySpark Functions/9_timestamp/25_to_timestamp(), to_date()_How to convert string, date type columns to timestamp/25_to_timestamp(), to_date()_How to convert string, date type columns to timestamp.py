@@ -78,12 +78,12 @@ display(df_ts.limit(10))
 # COMMAND ----------
 
 # DBTITLE 1,columns format: date (No need to define format)
-df_ts = df_ts.withColumn("End_Date_ts", to_timestamp(col("End_Date")))\
-             .withColumn("Expiration_Date_ts", to_timestamp(col('Expiration_Date')))\
-             .withColumn("Input_Start_Date_ts", to_timestamp(col('Input_Start_Date')))\
-             .withColumn("Input_End_Date_ts", to_timestamp(col("Input_End_Date")))\
-             .withColumn("Delivery_Start_Date8_ts", to_timestamp(col("Delivery_Start_Date8")))\
-             .withColumn("Delivery_Start_Date10_ts", to_timestamp(col("Delivery_Start_Date10")))
+df_ts = df_ts.withColumn("End_Date", to_timestamp(col("End_Date")))\
+             .withColumn("Expiration_Date", to_timestamp(col('Expiration_Date')))\
+             .withColumn("Input_Start_Date", to_timestamp(col('Input_Start_Date')))\
+             .withColumn("Input_End_Date", to_timestamp(col("Input_End_Date")))\
+             .withColumn("Delivery_Start_Date", to_timestamp(col("Delivery_Start_Date")))\
+             .withColumn("Delivery_Last_Date", to_timestamp(col("Delivery_Last_Date")))
 
 display(df_ts.limit(10))
 

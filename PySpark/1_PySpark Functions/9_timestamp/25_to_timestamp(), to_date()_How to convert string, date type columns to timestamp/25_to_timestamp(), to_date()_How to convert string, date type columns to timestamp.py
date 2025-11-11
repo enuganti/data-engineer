@@ -14,20 +14,50 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC - If your **date** is in the **default format yyyy-MM-dd**, you can directly use:
+# MAGIC ##### Scenario 01
 # MAGIC
-# MAGIC       df_ts = df.withColumn("my_timestamp", F.to_timestamp(F.col("my_date")))
-# MAGIC       df_ts.show(truncate=False)
+# MAGIC - If your **date** is in the **default format (yyyy-MM-dd)**, you can directly use:
+# MAGIC
+# MAGIC       df.withColumn("my_timestamp", F.to_timestamp(F.col("my_date")))
 # MAGIC
 # MAGIC - Spark assumes **midnight time (00:00:00)** because date doesn’t have time info.
 # MAGIC
-# MAGIC       +----------+-------------------+
-# MAGIC       |my_date   |my_timestamp       |
-# MAGIC       +----------+-------------------+
-# MAGIC       |2025-11-07|2025-11-07 00:00:00|
-# MAGIC       |2025-12-25|2025-12-25 00:00:00|
-# MAGIC       |2024-02-29|2024-02-29 00:00:00|
-# MAGIC       +----------+-------------------+
+# MAGIC |  my_date (STRING DATE / DATE)   |          my_timestamp            |
+# MAGIC |---------------------------------|----------------------------------|
+# MAGIC |      2025-11-07                 |   2025-11-07T00:00:00:000+00:00  |
+# MAGIC |      2025-12-25                 |   2025-12-25T00:00:00:000+00:00  |
+# MAGIC |      2024-02-29                 |   2024-02-29T00:00:00:000+00:00  |
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ##### Scenario 02
+# MAGIC
+# MAGIC - **Custom format (timestamp)**
+# MAGIC
+# MAGIC       df.withColumn('to_timestamp', to_timestamp(col('time'), 'dd-MMM-yyyy HH:mm:ss.SSS'))
+# MAGIC
+# MAGIC |  my_timestamp (STRING)          |          my_timestamp            |
+# MAGIC |---------------------------------|----------------------------------|
+# MAGIC |   28-Feb-2014 10:00:00.123      |   2014-02-28T10:00:00.123+00:00  |
+# MAGIC |   20-Feb-2016 08:08:08.999      |   2016-02-20T08:08:08.999+00:00  |
+# MAGIC |   31-Dec-2017 11:59:59.123      |   2017-12-31T11:59:59.123+00:00  |
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ##### Scenario 03
+# MAGIC
+# MAGIC - **Custom format (timestamp)**
+# MAGIC
+# MAGIC       df.withColumn("LOAD_DATE_TS", to_timestamp("Load_Date"))
+# MAGIC
+# MAGIC |  my_timestamp (STRING)          |          my_timestamp            |
+# MAGIC |---------------------------------|----------------------------------|
+# MAGIC |  2025-08-20 10:00:00	          |   2025-08-20T10:00:00.000+00:00  |
+# MAGIC |  2025-08-20 12:00:00	          |   2025-08-20T12:00:00.000+00:00  |
+# MAGIC |  2025-08-21 09:00:00	          |   2025-08-21T09:00:00.000+00:00  |
+# MAGIC |  2025-08-21 15:00:00	          |   2025-08-21T15:00:00.000+00:00  |
 
 # COMMAND ----------
 
@@ -110,3 +140,21 @@ datetimesDF = datetimesDF\
     .withColumn('to_timestamp', to_timestamp(col('time'), 'dd-MMM-yyyy HH:mm:ss.SSS'))
  
 display(datetimesDF)
+
+# COMMAND ----------
+
+data = [("2025-08-20 10:00:00"),
+        ("2025-08-20 12:00:00"),
+        ("2025-08-21 09:00:00"),
+        ("2025-08-21 15:00:00")
+       ]
+
+schema = ["Load_Date"]
+
+df_ts = spark.createDataFrame(data, schema)
+display(df_ts)
+
+# COMMAND ----------
+
+df_final_ts = df_ts.withColumn("LOAD_DATE_TS", to_timestamp("Load_Date"))
+display(df_final_ts)

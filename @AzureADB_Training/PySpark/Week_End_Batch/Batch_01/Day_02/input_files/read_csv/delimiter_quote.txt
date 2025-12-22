@@ -1,0 +1,10 @@
+product_id,product_name,category,description
+1,"Laptop","Electronics","High performance laptop"
+2,"Mobile","Electronics","Android, 5G phone"
+3,"Table","Furniture","Wooden, large table"
+4,"Laptop","Electronics","High performance laptop"
+5,"Mobile","Electronics","Android, 5G phone"
+6,"Table","Furniture","Wooden, large table"
+7,"Laptop","Electronics","High performance laptop"
+8,"Mobile","Electronics","Android, 5G phone"
+9,"Table","Furniture","Wooden, large table"

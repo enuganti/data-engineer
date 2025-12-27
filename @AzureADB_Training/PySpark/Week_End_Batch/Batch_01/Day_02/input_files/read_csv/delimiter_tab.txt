@@ -1,8 +1,0 @@
-product_id	product_name	category	price
-1	Laptop	Electronics	55000
-2	Mobile	Electronics	30000
-3	Table	Furniture	12000
-4	Laptop	Electronics	55000
-5	Mobile	Electronics	30000
-6	Table	Furniture	12000
-

@@ -1,5 +1,0 @@
-product_id,product_name,category,description
-1,"Laptop","Electronics","High-end ""gaming"" laptop"
-2,"Mobile","Electronics","""Android"" 5G phone"
-3,"Table","Furniture","Wooden ""large"" table"
-

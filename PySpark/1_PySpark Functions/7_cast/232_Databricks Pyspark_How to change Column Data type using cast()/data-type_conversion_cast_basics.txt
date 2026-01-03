@@ -1,0 +1,131 @@
+Syntax:
+-------
+
+ # Convert String to Integer Type
+ df.withColumn("age", df.age.cast(IntegerType()))
+ df.withColumn("age", df.age.cast('int'))
+ df.withColumn("age", df.age.cast('integer'))
+
+ # withColumn
+ df = df.withColumn("age", col("age").cast(StringType())) \
+        .withColumn("isGraduated", col("isGraduated").cast(BooleanType())) \
+        .withColumn("jobStartDate", col("jobStartDate").cast(DateType()))
+ df.printSchema()
+
+ # Convert String to Date
+ df.withColumn("Start_Date", to_date(col("Start_Date"), "dd-MMM-yyyy"))
+
+ # Convert Date to Long
+ df.withColumn('Payment_Date', f.col('Payment_Date').cast(LongType()))
+
+ # Convert String to Boolean
+ df.withColumn("isGraduated", col("isGraduated").cast(BooleanType()))
+
+
+
+
+ # select
+ df.select(col("age").cast('int').alias("age"))
+
+
+
+ # selectExpr()
+ df = df.selectExpr("cast(age as int) age",
+                    "cast(isGraduated as string) isGraduated",
+                    "cast(jobStartDate as string) jobStartDate")
+ df.printSchema()
+
+
+
+ # SQL expression
+ df.createOrReplaceTempView("CastExample")
+ df = spark.sql("SELECT STRING(age),BOOLEAN(isGraduated),DATE(jobStartDate) from CastExample")
+ df.printSchema()
+
+
+
+
+Example 01:
+-----------
+
+import pyspark.sql.functions as f
+from pyspark.sql.functions import lit, col, to_date, current_timestamp
+from pyspark.sql.types import StringType, DoubleType, LongType, BooleanType, DateType
+
+
+data =[{'rollno':'01', 'name':'sravan', 'age':23, 'height':5.79, 'weight':67, 'address':'Guntur'},
+       {'rollno':'02', 'name':'ojaswi', 'age':26, 'height':3.79, 'weight':34, 'address':'Hyderabad'},
+       {'rollno':'03', 'name':'gnanesh', 'age':37, 'height':2.79, 'weight':37, 'address':'Chennai'},
+       {'rollno':'04', 'name':'rohith', 'age':29, 'height':3.69, 'weight':28, 'address':'Bangalore'},
+       {'rollno':'05', 'name':'sridevi', 'age':45, 'height':5.59, 'weight':54, 'address':'Hyderabad'},
+       {'rollno':'04', 'name':'Kiran', 'age':49, 'height':4.69, 'weight':38, 'address':'Bangalore'},
+       {'rollno':'05', 'name':'Dhiraj', 'age':42, 'height':6.00, 'weight':34, 'address':'Nasik'},
+       {'rollno':'05', 'name':'Dhiraj', 'age':42, 'height':6.00, 'weight':34, 'address':'Kolkata'},
+       {'rollno':'05', 'name':'Dhiraj', 'age':42, 'height':6.00, 'weight':34, 'address':'Gurgaon'}]
+
+# create the dataframe
+df = spark.createDataFrame(data)
+df.show(truncate=False)
+df.printSchema()
+
+
+
+df = df.select("*", lit(2).alias('source_system_id'),                       # integer
+                    lit("2").alias('source_system_id'),                     # string
+                    lit(2).cast(LongType()).alias('source_system_id')       # long
+              )
+
+display(df)
+df.printSchema()
+
+
+
+
+Example 02:
+----------
+
+
+
+column_names = ["language", "framework", "users", "backend", "date"]
+data = [
+    ("Python", "Django", "20000", "true", "2022-03-15"),
+    ("Python", "FastAPI", "9000", "true", "2022-06-21"),
+    ("Java", "Spring", "7000", "true", "2023-12-04"),
+    ("JavaScript", "ReactJS", "5000", "false", "2023-01-11")
+]
+df4 = spark.createDataFrame(data, column_names)
+display(df4)
+df4.printSchema()
+
+
+
+Change Data Type of a Single Column
+-----------------------------------
+
+# change column type
+df_new = df4.withColumn("users", col("users").cast(IntegerType()))
+
+# print schema
+df_new.printSchema()
+
+
+
+Change Data Type of Multiple Columns
+------------------------------------
+   - Convert the data type of the column "users" from string to integer.
+   - Convert the data type of the column "backend" from string to boolean.
+   - Convert the data type of the column "date" from string to date.
+
+
+
+# change column types
+df_new1 = df4.withColumn("users", col("users").cast(IntegerType())) \
+             .withColumn("backend", col("backend").cast(BooleanType())) \
+             .withColumn("date", col("date").cast(DateType()))
+
+# print schema
+df_new1.printSchema()
+
+
+
+

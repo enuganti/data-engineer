@@ -1,8 +1,8 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC #### How to add meta data columns in bronze tables using lit()?
-# MAGIC - load_date
-# MAGIC - execution_date_time
+# MAGIC ##### How to `add meta data` columns in `bronze tables` using `lit()`?
+# MAGIC - `load_date`
+# MAGIC - `execution_date_time`
 
 # COMMAND ----------
 
@@ -39,13 +39,55 @@ def get_current_utc_datetime():
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### 1) initial load
+# MAGIC
+# MAGIC **First Execution**
+# MAGIC
+# MAGIC      # full_data_df.show(10,False)
+# MAGIC      full_data_df_first = full_data_df_first.withColumn("load_date", lit(PARAM_SCHEDULE_DATE).cast(DateType()))
+# MAGIC      full_data_df_first = full_data_df_first.withColumn("execution_date_time", lit(get_current_utc_datetime()).cast(TimestampType()))
+# MAGIC      display(full_data_df_first)
+# MAGIC
+# MAGIC      full_data_df_first.createOrReplaceTempView("bronze_table")
+# MAGIC
+# MAGIC      %sql
+# MAGIC      SELECT load_date, execution_date_time, COUNT(*)
+# MAGIC      FROM bronze_table
+# MAGIC      GROUP BY load_date, execution_date_time;
+# MAGIC
+# MAGIC **Second Execution**
+# MAGIC
+# MAGIC      # full_data_df.show(10,False)
+# MAGIC      full_data_df_second = full_data_df_second.withColumn("load_date", lit(PARAM_SCHEDULE_DATE).cast(DateType()))
+# MAGIC      full_data_df_second = full_data_df_second.withColumn("execution_date_time", lit(get_current_utc_datetime()).cast(TimestampType()))
+# MAGIC      display(full_data_df_second)
+# MAGIC
+# MAGIC      uniondf_sec = full_data_df_first.union(full_data_df_second)
+# MAGIC      display(uniondf_sec)
+# MAGIC
+# MAGIC      uniondf_sec.createOrReplaceTempView("bronze_table")
+# MAGIC
+# MAGIC      %sql
+# MAGIC      SELECT load_date, execution_date_time, COUNT(*)
+# MAGIC      FROM bronze_table
+# MAGIC      GROUP BY load_date, execution_date_time;
+# MAGIC
+# MAGIC **Incremental Load**
+# MAGIC
+# MAGIC      # full_data_df.show(10,False)
+# MAGIC      full_data_df_third = full_data_df_third.withColumn("load_date", lit(PARAM_SCHEDULE_DATE).cast(DateType()))
+# MAGIC      full_data_df_third = full_data_df_third.withColumn("execution_date_time", lit(get_current_utc_datetime()).cast(TimestampType()))
+# MAGIC      display(full_data_df_third)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ##### 1) initial load
 # MAGIC **a) First execution**
 
 # COMMAND ----------
 
 full_data_df_first = spark.read.csv("/Volumes/workspace/default/@azureadb/from_unixtime.csv", header=True, inferSchema=True)
-display(full_data_df_first)
+display(full_data_df_first.limit(15))
 
 # COMMAND ----------
 
@@ -53,7 +95,7 @@ display(full_data_df_first)
 full_data_df_first = full_data_df_first.withColumn("load_date", lit(PARAM_SCHEDULE_DATE).cast(DateType()))
 full_data_df_first = full_data_df_first.withColumn("execution_date_time", lit(get_current_utc_datetime()).cast(TimestampType()))
 
-display(full_data_df_first)
+display(full_data_df_first.limit(15))
 
 # COMMAND ----------
 
@@ -74,7 +116,7 @@ full_data_df_first.createOrReplaceTempView("bronze_table")
 # COMMAND ----------
 
 full_data_df_second = spark.read.csv("/Volumes/workspace/default/@azureadb/from_unixtime_01.csv", header=True, inferSchema=True)
-display(full_data_df_second)
+display(full_data_df_second.limit(15))
 
 # COMMAND ----------
 
@@ -82,12 +124,12 @@ display(full_data_df_second)
 full_data_df_second = full_data_df_second.withColumn("load_date", lit(PARAM_SCHEDULE_DATE).cast(DateType()))
 full_data_df_second = full_data_df_second.withColumn("execution_date_time", lit(get_current_utc_datetime()).cast(TimestampType()))
 
-display(full_data_df_second)
+display(full_data_df_second.limit(15))
 
 # COMMAND ----------
 
 uniondf_sec = full_data_df_first.union(full_data_df_second)
-display(uniondf_sec)
+display(uniondf_sec.limit(25))
 
 # COMMAND ----------
 
@@ -108,7 +150,7 @@ uniondf_sec.createOrReplaceTempView("bronze_table")
 # COMMAND ----------
 
 full_data_df_third = spark.read.csv("/Volumes/workspace/default/@azureadb/from_unixtime_02.csv", header=True, inferSchema=True)
-display(full_data_df_third)
+display(full_data_df_third.limit(15))
 
 # COMMAND ----------
 
@@ -116,12 +158,12 @@ display(full_data_df_third)
 full_data_df_third = full_data_df_third.withColumn("load_date", lit(PARAM_SCHEDULE_DATE).cast(DateType()))
 full_data_df_third = full_data_df_third.withColumn("execution_date_time", lit(get_current_utc_datetime()).cast(TimestampType()))
 
-display(full_data_df_third)
+display(full_data_df_third.limit(15))
 
 # COMMAND ----------
 
 uniondf_final = uniondf_sec.union(full_data_df_third)
-display(uniondf_final)
+display(uniondf_final.limit(25))
 
 # COMMAND ----------
 

@@ -40,7 +40,7 @@ Sales_Collect_df = Sales_Collect_Rev02 \
      .join(SalesData_Rev02, how='left', on=[F.col('Target_Simulation_Id') == F.col('Target_Simulation_Identity')]) \
      .join(RunningData_Rev02, how='left', on=['Target_Event_Identity'])
                         
-display(Sales_Collect_df)
+display(Sales_Collect_df.limit(20))
 
 # COMMAND ----------
 

@@ -6,50 +6,60 @@
 
 # COMMAND ----------
 
-import pyspark.sql.functions as f
+import pyspark.sql.functions as F
 from pyspark.sql.functions import col, cast
 
 # COMMAND ----------
 
-RunningData_Rev02 = spark.read.option('header',True).option("quote", "\"").option('InferSchema',True).csv("/FileStore/tables/RunningData_Rev02.csv")
+RunningData_Rev02 = spark.read.option('header',True) \
+                              .option("quote", "\"") \
+                              .option('InferSchema',True) \
+                              .csv("/Volumes/azureadb/pyspark/join/RunningData_Rev02.csv")
 display(RunningData_Rev02)
 
 # COMMAND ----------
 
-SalesData_Rev02 = spark.read.option('header',True).option("quote", "\"").option('InferSchema',True).csv("/FileStore/tables/SalesData_Rev02.csv")
+SalesData_Rev02 = spark.read.option('header',True) \
+                            .option("quote", "\"") \
+                            .option('InferSchema',True) \
+                            .csv("/Volumes/azureadb/pyspark/join/SalesData_Rev02.csv")
 display(SalesData_Rev02)
 
 # COMMAND ----------
 
-Sales_Collect_Rev02 = spark.read.option('header',True).option("quote", "\"").option('InferSchema',True).csv("/FileStore/tables/Sales_Collect_Rev02.csv")
-display(Sales_Collect_Rev02)
+Sales_Collect_Rev02 = spark.read.option('header',True) \
+                                .option("quote", "\"") \
+                                .option('InferSchema',True) \
+                                .csv("/Volumes/azureadb/pyspark/join/Sales_Collect_Rev02.csv")
+display(Sales_Collect_Rev02.limit(20))
+print("Total Number of Rows: ", Sales_Collect_Rev02.count())
 
 # COMMAND ----------
 
-Sales_Collect_df = Sales_Collect_Rev02.\
-                             join(SalesData_Rev02, how='left',
-                                  on=[f.col('Target_Simulation_Id') == f.col('Target_Simulation_Identity')]).\
-                             join(RunningData_Rev02, how='left', on=['Target_Event_Identity'])
+Sales_Collect_df = Sales_Collect_Rev02 \
+     .join(SalesData_Rev02, how='left', on=[F.col('Target_Simulation_Id') == F.col('Target_Simulation_Identity')]) \
+     .join(RunningData_Rev02, how='left', on=['Target_Event_Identity'])
                         
-display(Sales_Collect_df.limit(10))
+display(Sales_Collect_df)
 
 # COMMAND ----------
 
-#format columns according to datatypes of Kafka Schema
-Sales_Collect_df = Sales_Collect_df.\
-                         withColumn('Id', f.col('Id').cast(StringType())).\
-                         withColumn('dept_Id', f.col('dept_Id').cast(StringType())).\
-                         withColumn('SubDept_Id', f.col('SubDept_Id').cast(StringType())).\
-                         withColumn('Target_Simulation_Id', f.col('Target_Simulation_Id').cast(StringType())).\
-                         withColumn('Vehicle_Id', f.col('Vehicle_Id').cast(StringType())).\
-                         withColumn('Vehicle_Profile_Id', f.col('Vehicle_Profile_Id').cast(StringType())).\
-                         withColumn('Description', f.col('Description').cast(StringType())).\
-                         withColumn('Vehicle_Price_Id', f.col('Vehicle_Price_Id').cast(StringType())).\
-                         withColumn('Vehicle_Showroom_Price', f.col('Vehicle_Showroom_Price').cast(DoubleType())).\
-                         withColumn('Vehicle_Showroom_Delta', f.col('Vehicle_Showroom_Delta').cast(DoubleType())).\
-                         withColumn('Vehicle_Showroom_Payment_Date', f.col('Vehicle_Showroom_Payment_Date').cast(LongType())).\
-                         withColumn('Average', f.col('Average').cast(DoubleType())).\
-                         withColumn('Increment', f.col('Increment').cast(DoubleType()))
+from pyspark.sql.types import StringType, DoubleType, LongType
+from pyspark.sql.functions import to_date
+
+Sales_Collect_df = Sales_Collect_df \
+    .withColumn('Id', F.col('Id').cast(StringType())) \
+    .withColumn('dept_Id', F.col('dept_Id').cast(StringType())) \
+    .withColumn('SubDept_Id', F.col('SubDept_Id').cast(StringType())) \
+    .withColumn('Target_Simulation_Id', F.col('Target_Simulation_Id').cast(StringType())) \
+    .withColumn('Vehicle_Id', F.col('Vehicle_Id').cast(StringType())) \
+    .withColumn('Vehicle_Profile_Id', F.col('Vehicle_Profile_Id').cast(StringType())) \
+    .withColumn('Vehicle_Price_Id', F.col('Vehicle_Price_Id').cast(StringType())) \
+    .withColumn('Target_Simulation_Identity', F.col('Target_Simulation_Identity').cast(LongType())) \
+    .withColumn('Sales_Timestamp', F.col('Sales_Timestamp').cast(LongType())) \
+    .withColumn('Vehicle_Delivery_Date', to_date(col('Vehicle_Delivery_Date'), "d-MMM-yy"))
+
+display(Sales_Collect_df.limit(20))
 
 # COMMAND ----------
 
@@ -81,12 +91,12 @@ Sales_Collect_df = Sales_Collect_df.\
 
 # COMMAND ----------
 
-data = [("James",34,"2006-01-01","true","M",3000.60),
-        ("Michael",33,"1980-01-10","true","F",3300.80),
-        ("Robert",37,"06-01-1992","false","M",5000.50)
+data = [("James", 34, "2006-01-01", "true", "M", 3000.60),
+        ("Michael", 33, "1980-01-10", "true", "F", 3300.80),
+        ("Robert", 37, "1992-01-06", "false", "M", 5000.50)
       ]
 
-columns = ["firstname","age","jobStartDate","isGraduated","gender","salary"]
+columns = ["firstname", "age", "jobStartDate", "isGraduated", "gender", "salary"]
 
 df2 = spark.createDataFrame(data = data, schema = columns)
 display(df2)
@@ -101,7 +111,11 @@ df2.printSchema()
 
 # COMMAND ----------
 
-df3 = df.withColumn("age", col("age").cast(StringType())) \
-        .withColumn("isGraduated", col("isGraduated").cast(BooleanType())) \
-        .withColumn("jobStartDate", col("jobStartDate").cast(DateType()))
+from pyspark.sql.types import StringType, BooleanType, DateType
+
+df3 = df2.withColumn("age", col("age").cast(StringType())) \
+         .withColumn("isGraduated", col("isGraduated").cast(BooleanType())) \
+         .withColumn("jobStartDate", col("jobStartDate").cast(DateType()))
+
+display(df3)
 df3.printSchema()

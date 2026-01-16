@@ -65,11 +65,11 @@ list(dict.fromkeys(status))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC | Step | Expression              | Purpose                       | Result                                                    |
-# MAGIC | ---- | ----------------------- | ----------------------------- | --------------------------------------------------------- |
-# MAGIC | 1    | `status`                | Original list                 | `['Active', 'Inactive', 'Active', 'Pending', 'Inactive']` |
-# MAGIC | 2    | `dict.fromkeys(status)` | Remove duplicates (keys only) | `{'Active': None, 'Inactive': None, 'Pending': None}`     |
-# MAGIC | 3    | `list(...)`             | Convert keys back to list     | `['Active', 'Inactive', 'Pending']`                       |
+# MAGIC | Step | Expression              | Purpose                         | Result                                                    |
+# MAGIC | ---- | ----------------------- | ------------------------------- | --------------------------------------------------------- |
+# MAGIC | 1    | `status`                | `Original list`                 | `['Active', 'Inactive', 'Active', 'Pending', 'Inactive']` |
+# MAGIC | 2    | `dict.fromkeys(status)` | `Remove duplicates (keys only)` | `{'Active': None, 'Inactive': None, 'Pending': None}`     |
+# MAGIC | 3    | `list(...)`             | `Convert keys back to list`     | `['Active', 'Inactive', 'Pending']`                       |
 
 # COMMAND ----------
 
@@ -105,10 +105,6 @@ employees = ['E101', 'E102', 'E103', 'E104']
 
 status = dict.fromkeys(employees, 'Pending')
 print(status)
-
-# COMMAND ----------
-
-
 
 # COMMAND ----------
 

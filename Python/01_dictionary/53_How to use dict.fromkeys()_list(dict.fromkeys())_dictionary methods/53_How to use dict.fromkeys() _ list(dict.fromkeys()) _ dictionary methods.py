@@ -83,15 +83,15 @@ list(set(status))
 
 # MAGIC %md
 # MAGIC | dict.fromkeys(status) |   set(status)   |
-# MAGIC |-----------------------|-----------------------------|
-# MAGIC | {'NA': None,          | {'ADLS',                    |
-# MAGIC    'Customer': None,    |  'Admin',
-# MAGIC    'Admin': None,       |  'Customer',
-# MAGIC    'Search': None,      |  'Marketing',
-# MAGIC    'Transport': None,   |  'NA',
-# MAGIC    'ADLS': None,        |  'Sales',
-# MAGIC    'Sales': None,       |  'Search',
-# MAGIC    'Marketing': None}   |  'Transport'}
+# MAGIC |-----------------------|-----------------|
+# MAGIC | {'NA': None,          | {'ADLS',        |
+# MAGIC |  'Customer': None,    |  'Admin',       |              
+# MAGIC |  'Admin': None,       |  'Customer',    |
+# MAGIC |  'Search': None,      |  'Marketing',   |
+# MAGIC |  'Transport': None,   |  'NA',          |
+# MAGIC |  'ADLS': None,        |  'Sales',       |
+# MAGIC |  'Sales': None,       |  'Search',      |
+# MAGIC |  'Marketing': None}   |  'Transport'}   |
 
 # COMMAND ----------
 

@@ -50,6 +50,15 @@ status = ['NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA'
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC      dict.fromkeys(status)
+# MAGIC      list(dict.fromkeys(status))
+# MAGIC                (or)
+# MAGIC      set(status)
+# MAGIC      list(set(status))
+
+# COMMAND ----------
+
 dict.fromkeys(status)
 
 # COMMAND ----------
@@ -61,6 +70,28 @@ dict.fromkeys(status)
 # COMMAND ----------
 
 list(dict.fromkeys(status))
+
+# COMMAND ----------
+
+set(status)
+
+# COMMAND ----------
+
+list(set(status))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC | dict.fromkeys(status) |   set(status)   |
+# MAGIC |-----------------------|-----------------------------|
+# MAGIC | {'NA': None,          | {'ADLS',                    |
+# MAGIC    'Customer': None,    |  'Admin',
+# MAGIC    'Admin': None,       |  'Customer',
+# MAGIC    'Search': None,      |  'Marketing',
+# MAGIC    'Transport': None,   |  'NA',
+# MAGIC    'ADLS': None,        |  'Sales',
+# MAGIC    'Sales': None,       |  'Search',
+# MAGIC    'Marketing': None}   |  'Transport'}
 
 # COMMAND ----------
 

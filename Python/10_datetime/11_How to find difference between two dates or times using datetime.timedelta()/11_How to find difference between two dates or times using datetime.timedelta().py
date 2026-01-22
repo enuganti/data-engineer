@@ -219,14 +219,19 @@ print("Past Date:", past_date)
 
 # COMMAND ----------
 
+from datetime import datetime
+
 # Define two dates
 date1 = datetime(2024, 1, 1)
 date2 = datetime(2024, 1, 10)
 
 # Calculate the difference between the two dates
 difference = date2 - date1
-print("Difference:", difference)
-print("Days:", difference.days)
+
+print("first date:", date1)
+print("second date:", date2)
+print("No of days in difference:", difference)
+print("difference b/n dates:", difference.days)
 
 # COMMAND ----------
 
@@ -341,6 +346,7 @@ print("Sub milliseconds:", sub_milliseconds)
 
 # COMMAND ----------
 
+import random
 from datetime import datetime, timedelta
 (datetime.now() - timedelta(days=random.randint(0, 365)))
 

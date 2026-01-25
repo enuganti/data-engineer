@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC #### **locate()**
+# MAGIC ##### locate()
 # MAGIC
 # MAGIC - The **locate()** function in PySpark is used to find the **position of a substring** within a **string**.
 # MAGIC
@@ -15,7 +15,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### **Syntax**
+# MAGIC ##### Syntax
 # MAGIC
 # MAGIC      locate(substr, str[, pos])
 # MAGIC
@@ -32,64 +32,76 @@ from pyspark.sql.functions import substring, concat, lit, col, expr, locate
 # COMMAND ----------
 
 # DBTITLE 1,sample dataset
-data = [(1, "Weekly", "FREQUENCY=YEARLY;INTERVAL=5;UNTIL=20980131T000000Z;BYSETPOS=6;BYDAY=TH;BYMONTH=12;"),
-        (2, "Smoke test", "FREQUENCY=YEARLY;INTERVAL=7;BYMONTHDAY=12;BYMONTH=1;UNTIL=20230112T000000Z;"),
-        (3, "MSC Audit", "FREQUENCY=YEARLY;INTERVAL=2;COUNT=10;BYMONTH=8;BYMONTHDAY=19;"),
-        (4, "Regression Test", "FREQUENCY=MONTHLY;INTERVAL=5;COUNT=9;BYMONTHDAY=29;"),
-        (5, "Random Test", "FREQUENCY=MONTHLY;INTERVAL=19;COUNT=10;"),
-        (6, "Testing", "FREQUENCY=MONTHLY;INTERVAL=14;"),
-        (7, "unit test", "FREQUENCY=MONTHLY;INTERVAL=13;")]
+data = [(1, "Weekly", "Repeat=yearly;term=1;endtime=20240131T000000Z;pos=1;day=TH;month=2;"),
+        (2, "Assurance test", "Repeat=yearly;term=1;monthday=12;month=1;endtime=20230112T000000Z;"),
+        (3, "MSC Audit", "Repeat=yearly;term=2;COUNT=10;month=8;monthday=19;"),
+        (4, "Regression Test", "Repeat=monthly;term=2;COUNT=2;monthday=9;"),
+        (5, "Lab Safety", "Repeat=monthly;term=3;COUNT=10;"),
+        (6, "Testing", "Repeat=monthly;term=6;"),
+        (7, "test", "Repeat=monthly;term=1;")]
 
-schema = ["Id", "Title", "RecurrencePattern"]
+schema = ["Id", "Type", "Pattern"]
 
 df = spark.createDataFrame(data, schema)
 display(df)
+df.printSchema()
 
 # COMMAND ----------
 
-df1 = df.withColumn("loc", locate(";", col("RecurrencePattern")))
+df1 = df.withColumn("loc", locate(";", col("Pattern")))
 display(df1)
 
 # COMMAND ----------
 
-df_FREQUENCY = df\
-    .withColumn("loc_first", locate(";", col("RecurrencePattern"), 1)) \
-    .withColumn("FREQUENCY_TYPE", expr("substring(RecurrencePattern, 0, (loc_first-1))")) \
-    .withColumn("FREQUENCY", expr("substring(RecurrencePattern, loc_first+1, length(RecurrencePattern)-1)"))
-display(df_FREQUENCY)
+df_01 = df.withColumn("loc1", locate(";", col("Pattern"), 1)) \
+          .withColumn("Repeat", expr("substring(Pattern, 0, (loc1-1))")) \
+          .withColumn("Frequency", expr("substring(Pattern, loc1+1, length(Pattern))"))
+
+df_01_Repeat = df_01.select("Id", "Type", "Pattern", "loc1", "Repeat", "Frequency")
+display(df_01_Repeat)
+df_01_Repeat.printSchema()
 
 # COMMAND ----------
 
-df_INTERVAL = df_FREQUENCY\
-    .withColumn("loc_second", locate(";", col("FREQUENCY"), 1)) \
-    .withColumn("INTERVAL", expr("substring(FREQUENCY, 0, (loc_second-1))")) \
-    .withColumn("UNTIL", expr("substring(FREQUENCY, loc_second+1, length(FREQUENCY)-1)")) \
-    .select("FREQUENCY", "loc_second", "INTERVAL", "UNTIL")
-display(df_INTERVAL)
+df_02 = df_01.withColumn("loc2", locate(";", col("Frequency"), 1)) \
+             .withColumn("term", expr("substring(Frequency, 0, (loc2-1))")) \
+             .withColumn("Frequency2", expr("substring(Frequency, loc2+1, length(Frequency))"))
+
+df_02_term = df_02.select("Id", "Type", "Frequency", "Repeat", "loc2", "term", "Frequency2")
+display(df_02_term)
+df_02_term.printSchema()
 
 # COMMAND ----------
 
-df_COUNT = df_INTERVAL\
-    .withColumn("loc_third", locate(";", col("UNTIL"), 1)) \
-    .withColumn("COUNT", expr("substring(UNTIL, 0, (loc_third-1))")) \
-    .withColumn("BYMONTH", expr("substring(UNTIL, loc_third+1, length(UNTIL)-1)")) \
-    .select("UNTIL", "loc_third", "COUNT", "BYMONTH")
-display(df_COUNT)
+df_03 = df_02.withColumn("loc3", locate(";", col("Frequency2"), 1)) \
+             .withColumn("count", expr("substring(Frequency2, 0, (loc3-1))")) \
+             .withColumn("Frequency3", expr("substring(Frequency2, loc3+1, length(Frequency2))"))
+
+df_03_term = df_03.select("Id", "Type", "Frequency2", "Repeat", "term", "loc3", "count", "Frequency3")
+display(df_03_term)
+df_03_term.printSchema()
 
 # COMMAND ----------
 
-df_BYSETPOS = df_COUNT\
-    .withColumn("loc_fourth", locate(";", col("BYMONTH"), 1)) \
-    .withColumn("BYSETPOS", expr("substring(BYMONTH, 0, (loc_fourth-1))")) \
-    .withColumn("BYDAY", expr("substring(BYMONTH, loc_fourth+1, length(BYMONTH)-1)")) \
-    .select("BYMONTH", "loc_fourth", "BYSETPOS", "BYDAY")
-display(df_BYSETPOS)
+df_04 = df_03.withColumn("loc4", locate(";", col("Frequency3"), 1)) \
+             .withColumn("endtime", expr("substring(Frequency3, 0, (loc4-1))")) \
+             .withColumn("Frequency4", expr("substring(Frequency3, loc4+1, length(Frequency3))"))
+
+df_04_term = df_04.select("Id", "Type", "Frequency3", "Repeat", "term", "count", "loc4", "endtime", "Frequency4")
+display(df_04_term)
+df_04_term.printSchema()
 
 # COMMAND ----------
 
-df_final = df_BYSETPOS\
-    .withColumn("loc_fifth", locate(";", col("BYDAY"), 1)) \
-    .withColumn("BYMONTHDAY", expr("substring(BYDAY, 0, (loc_fifth-1))")) \
-    .withColumn("final_col", expr("substring(BYDAY, loc_fifth+1, length(BYDAY)-1)")) \
-    .select("BYDAY", "loc_fifth", "BYMONTHDAY", "final_col")
+df_05 = df_04.withColumn("loc5", locate(";", col("Frequency4"), 1)) \
+             .withColumn("day", expr("substring(Frequency4, 0, (loc5-1))")) \
+             .withColumn("month", expr("substring(Frequency4, loc5+1, length(Frequency4))"))
+
+df_05_term = df_05.select("Id", "Type", "Frequency4", "Repeat", "term", "count", "endtime", "loc5", "day", "month")
+display(df_05_term)
+df_05_term.printSchema()
+
+# COMMAND ----------
+
+df_final = df_05_term.select("Id", "Type", "Repeat", "term", "count", "endtime", "day", "month")
 display(df_final)

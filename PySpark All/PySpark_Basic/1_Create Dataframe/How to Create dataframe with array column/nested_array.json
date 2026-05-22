@@ -1,0 +1,64 @@
+[
+  {
+    "employee": {
+      "employee_id": "EMP001",
+      "employee_name": "Rohit Sharma",
+      "category": [
+        {
+          "category_id": "ENG",
+          "category_name": "Senior Developer",
+          "software": [
+            { "package_id": "PKG101", "sales": 15420 },
+            { "package_id": "PKG102", "sales": 98706 },
+            { "package_id": "PKG103", "sales": 67930 },
+            { "package_id": "PKG104", "sales": 89549 }
+          ]
+        },
+        {
+          "category_id": "ARCH",
+          "category_name": "Solution Architect",
+          "software": [
+            { "package_id": "PKG201", "sales": 22100 },
+            { "package_id": "PKG202", "sales": 19800 },
+            { "package_id": "PKG203", "sales": 54937 },
+            { "package_id": "PKG204", "sales": 78947 }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "employee": {
+      "employee_id": "EMP002",
+      "employee_name": "Anjali Verma",
+      "category": [
+        {
+          "category_id": "QA",
+          "category_name": "Test Lead",
+          "software": [
+            { "package_id": "PKG301", "sales": 7800 },
+            { "package_id": "PKG302", "sales": 6450 },
+            { "package_id": "PKG303", "sales": 8734 }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "employee": {
+      "employee_id": "EMP003",
+      "employee_name": "Suresh Kumar",
+      "category": [
+        {
+          "category_id": "DEVOPS",
+          "category_name": "DevOps Engineer",
+          "software": [
+            { "package_id": "PKG401", "sales": 13400 },
+            { "package_id": "PKG402", "sales": 15900 },
+            { "package_id": "PKG403", "sales": 11200 }
+          ]
+        }
+      ]
+    }
+  }
+]
